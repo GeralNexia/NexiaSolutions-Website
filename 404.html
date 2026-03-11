@@ -19,6 +19,21 @@
     <meta name="twitter:title" content="Nexia Solutions — Soluções à Medida. Tecnologia sem Limites.">
     <meta property="og:description" content="A Nexia Solutions transforma negócios com automação, Inteligência Artificial e soluções digitais 100% personalizadas. 4 anos de experiência em transformação digital.">
     <meta name="twitter:description" content="A Nexia Solutions transforma negócios com automação, Inteligência Artificial e soluções digitais 100% personalizadas. 4 anos de experiência em transformação digital.">
+    
+    <!-- SCRIPT DE REDIRECIONAMENTO PARA GITHUB PAGES -->
+    <script type="text/javascript">
+      // Redireciona qualquer rota para o index.html com a hash preservada
+      var path = window.location.pathname;
+      var hash = window.location.hash;
+      var search = window.location.search;
+      
+      // Ignora redirecionamento se for um asset (js, css, imagens) ou se já tiver hash
+      if (path !== '/' && !path.startsWith('/assets') && !path.startsWith('/src')) {
+        // Constrói a nova URL com a hash
+        var newUrl = '/' + '#/' + path.substring(1) + search + hash;
+        window.location.replace(newUrl);
+      }
+    </script>
   </head>
 
   <body>
