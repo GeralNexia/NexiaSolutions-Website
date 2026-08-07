@@ -7,7 +7,4 @@ export default defineConfig({
     TanStackRouterVite(),
     react(),
   ],
-  resolve: {
-    tsconfigPaths: true,
-  },
 });
