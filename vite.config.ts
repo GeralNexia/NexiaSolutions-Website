@@ -2,12 +2,12 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite' // <--- 1. Importa o plugin
 
 export default defineConfig({
-  base: '/', // <--- Alterado para raiz, pois o site abre diretamente em geralnexia.github.io
+  base: '/NexiaSolutions-Website/',
   plugins: [
-    tailwindcss(),
+    tailwindcss(), // <--- 2. Adiciona o plugin aqui no topo dos plugins
     TanStackRouterVite(), 
     react(), 
     tsconfigPaths()
