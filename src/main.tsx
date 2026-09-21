@@ -1,12 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { RouterProvider, createRouter, createHashHistory } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
 import { queryClient } from './queryClient'
 import './styles.css'
 
+// Cria o histórico com hash para o GitHub Pages não dar 404 no refresh
+const hashHistory = createHashHistory()
+
 const router = createRouter({
   routeTree,
+  history: hashHistory, // <--- Mantém o hash history ativo
   context: {
     queryClient,
   },
