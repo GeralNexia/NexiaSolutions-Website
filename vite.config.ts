@@ -5,7 +5,7 @@ import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/', // <--- Alterado para raiz, pois o site abre diretamente em geralnexia.github.io
+  base: '/NexiaSolutions-Website/', // <--- Essencial para corresponder ao subdiretório do GitHub Pages
   plugins: [
     tailwindcss(),
     TanStackRouterVite(), 
