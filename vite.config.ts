@@ -1,7 +1,16 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from '@tanstack/start/config'
 
 export default defineConfig({
-  plugins: [react()],
-  base: '/NexiaSolutions-Website/',
+  deployment: {
+    preset: 'static', // Garante a geração estática
+  },
+  router: {
+    basepath: '/NexiaSolutions-Website', // <-- Subcaminho no GitHub Pages
+  },
+  server: {
+    preset: 'static',
+  },
+  vite: {
+    base: '/NexiaSolutions-Website/',
+  },
 })
