@@ -2,12 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from '@tanstack/react-router'
 import { createRouter } from './router'
-import './index.css' // <-- Adiciona esta linha
+import './styles.css'
 
 const router = createRouter()
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-)
+const rootElement = document.getElementById('root')
+
+if (rootElement && !rootElement.innerHTML) {
+  const root = ReactDOM.createRoot(rootElement)
+  root.render(
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  )
+}
