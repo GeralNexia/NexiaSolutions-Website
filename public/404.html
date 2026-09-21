@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Nexia Solutions</title>
+    <script type="text/javascript">
+      // Redireciona qualquer rota 404 de volta para o index.html mantendo o caminho original
+      var pathSegmentsToKeep = 1; // Ajusta para 1 se o repositório estiver num subdiretório como /NexiaSolutions-Website/
+      var l = window.location;
+      var repoPath = l.pathname.split('/')[1];
+      
+      // Faz o redirect para a raiz com o parâmetro de rota correto para o router ler
+      window.location.replace(
+        l.protocol + '//' + l.host + '/' + repoPath + '/?p=/' + 
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/') +
+        (l.search ? '&' + l.search.slice(1) : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
