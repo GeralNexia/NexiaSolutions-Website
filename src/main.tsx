@@ -1,15 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, createHashHistory, createRouter } from '@tanstack/react-router'
+import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
+import { queryClient } from './queryClient'
 import './styles.css'
-
-// Criação do router com HashHistory para evitar problemas de rotas e subpastas no GitHub Pages
-const hashHistory = createHashHistory()
 
 const router = createRouter({
   routeTree,
-  history: hashHistory,
+  context: {
+    queryClient,
+  },
 })
 
 declare module '@tanstack/react-router' {
