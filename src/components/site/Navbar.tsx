@@ -38,6 +38,17 @@ export function Navbar() {
     localStorage.setItem("nexia-theme", next ? "dark" : "light");
   };
 
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setOpen(false);
+    const targetId = href.replace("#", "");
+    const elem = document.getElementById(targetId);
+    if (elem) {
+      elem.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState(null, "", href);
+    }
+  };
+
   const logoSrc = `${import.meta.env.BASE_URL}nexia-logo.png`;
 
   return (
@@ -51,7 +62,12 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
-        <a href="#top" className="flex items-center gap-2.5" aria-label="Nexia Solutions">
+        <a 
+          href="#top" 
+          onClick={(e) => handleScrollTo(e, "#top")}
+          className="flex items-center gap-2.5" 
+          aria-label="Nexia Solutions"
+        >
           <img
             src={logoSrc}
             alt="Nexia Solutions"
@@ -68,7 +84,8 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent/60 hover:text-foreground"
+              onClick={(e) => handleScrollTo(e, l.href)}
+              className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent/60 hover:text-foreground cursor-pointer"
             >
               {l.label}
             </a>
@@ -85,7 +102,7 @@ export function Navbar() {
             {dark ? <Sun /> : <Moon />}
           </Button>
           <Button variant="hero" className="hidden sm:inline-flex" asChild>
-            <a href="#contacto">Diagnóstico Gratuito</a>
+            <a href="#contacto" onClick={(e) => handleScrollTo(e, "#contacto")}>Diagnóstico Gratuito</a>
           </Button>
           <Button
             variant="ghost"
@@ -110,8 +127,8 @@ export function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:bg-accent/60 hover:text-foreground"
+                onClick={(e) => handleScrollTo(e, l.href)}
+                className="rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:bg-accent/60 hover:text-foreground cursor-pointer"
               >
                 {l.label}
               </a>
