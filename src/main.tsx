@@ -1,29 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { RouterProvider, createRouter, createHashHistory } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
 import { queryClient } from './queryClient'
 import './styles.css'
 
-// Lógica para recuperar a rota correta caso o GitHub Pages redirecione pelo 404.html
-(function () {
-  const l = window.location
-  const search = l.search
-  if (search && search.startsWith('?p=/')) {
-    const decoded = search
-      .slice(3)
-      .split('&')[0]
-      .replace(/~and~/g, '&')
-    window.history.replaceState(
-      null,
-      null,
-      l.pathname.slice(0, -1) + decoded + l.hash
-    )
-  }
-})()
+// Usa o histórico com hash para o GitHub Pages detetar as rotas corretamente sem erros 404
+const hashHistory = createHashHistory()
 
 const router = createRouter({
   routeTree,
+  history: hashHistory,
   context: {
     queryClient,
   },

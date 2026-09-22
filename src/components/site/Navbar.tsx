@@ -3,8 +3,7 @@ import { motion } from "motion/react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logoAsset from "@/assets/nexia-logo.png.asset.json";
-
+import logoImage from "@/assets/nexia-logo.png"; // <--- Importação direta corrigida
 
 const links = [
   { href: "#servicos", label: "Serviços" },
@@ -53,8 +52,8 @@ export function Navbar() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
         <a href="#top" className="flex items-center gap-2.5" aria-label="Nexia Solutions">
           <img
-            src={logoAsset.url}
-            alt=""
+            src={logoImage}
+            alt="Nexia Solutions"
             className="h-8 w-auto rounded-lg"
             loading="eager"
           />
@@ -74,7 +73,6 @@ export function Navbar() {
             </a>
           ))}
         </div>
-
 
         <div className="flex items-center gap-2">
           <Button
@@ -123,4 +121,3 @@ export function Navbar() {
     </motion.header>
   );
 }
-
