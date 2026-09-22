@@ -23,9 +23,21 @@ const groups = [
 ];
 
 const socials = [
-  { icon: Facebook, label: "Facebook", href: "https://facebook.com" },
-  { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
-  { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/351924890248" },
+  { 
+    icon: Facebook, 
+    label: "Facebook", 
+    href: "https://www.facebook.com/profile.php?viewas=100000686899395&id=61593294254599&locale=pt_PT" 
+  },
+  { 
+    icon: Instagram, 
+    label: "Instagram", 
+    href: "https://www.instagram.com/nexia__solutions?stkn=MTQ2M2Y2Zml5a2R0NQ==" 
+  },
+  { 
+    icon: MessageCircle, 
+    label: "WhatsApp", 
+    href: "https://wa.me/351924890248" 
+  },
 ];
 
 export function Footer() {
