@@ -43,24 +43,17 @@ const socials = [
 export function Footer() {
   const logoSrc = `${import.meta.env.BASE_URL}nexia-logo.png`;
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace("#", "");
-    const elem = document.getElementById(targetId);
-    if (elem) {
-      elem.scrollIntoView({ behavior: "smooth" });
-      window.history.pushState(null, "", href);
-    }
-  };
-
   return (
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(2,1fr)]">
           <div>
             <a 
-              href="#top" 
-              onClick={(e) => handleScrollTo(e, "#top")}
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               className="flex items-center gap-2.5 cursor-pointer"
             >
               <img
@@ -115,7 +108,6 @@ export function Footer() {
                   <li key={l.label}>
                     <a
                       href={l.href}
-                      onClick={(e) => handleScrollTo(e, l.href)}
                       className="text-sm text-muted-foreground transition-colors hover:text-primary cursor-pointer"
                     >
                       {l.label}
@@ -134,14 +126,12 @@ export function Footer() {
           <div className="flex gap-6">
             <a 
               href="#contacto" 
-              onClick={(e) => handleScrollTo(e, "#contacto")} 
               className="text-xs text-muted-foreground hover:text-primary cursor-pointer"
             >
               Política de Privacidade
             </a>
             <a 
               href="#contacto" 
-              onClick={(e) => handleScrollTo(e, "#contacto")} 
               className="text-xs text-muted-foreground hover:text-primary cursor-pointer"
             >
               Termos
