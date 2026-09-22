@@ -1,5 +1,4 @@
 import { Facebook, Instagram, MessageCircle, Mail, Phone } from "lucide-react";
-import logoAsset from "@/assets/nexia-logo.png.asset.json";
 
 const groups = [
   {
@@ -30,6 +29,8 @@ const socials = [
 ];
 
 export function Footer() {
+  const logoSrc = `${import.meta.env.BASE_URL}nexia-logo.png`;
+
   return (
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
@@ -37,8 +38,8 @@ export function Footer() {
           <div>
             <a href="#top" className="flex items-center gap-2.5">
               <img
-                src={logoAsset.url}
-                alt=""
+                src={logoSrc}
+                alt="Nexia Solutions"
                 className="h-8 w-auto rounded-lg"
                 loading="lazy"
               />
