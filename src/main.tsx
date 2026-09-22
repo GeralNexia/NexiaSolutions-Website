@@ -1,11 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter, createHashHistory } from '@tanstack/router'
+import { RouterProvider, createRouter, createHashHistory } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
 import { queryClient } from './queryClient'
 import './styles.css'
 
-// O Hash History é a forma mais limpa e estável para SPAs no GitHub Pages (evita 404s sem truques)
 const hashHistory = createHashHistory()
 
 const router = createRouter({
@@ -16,7 +15,7 @@ const router = createRouter({
   },
 })
 
-declare module '@tanstack/router' {
+declare module '@tanstack/react-router' {
   interface Register {
     router: typeof router
   }
