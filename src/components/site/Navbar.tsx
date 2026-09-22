@@ -3,14 +3,13 @@ import { motion } from "motion/react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logoImage from "../../assets/nexia-logo.png";
 
 const links = [
   { href: "#servicos", label: "Serviços" },
   { href: "#processo", label: "Como Trabalhamos" },
   { href: "#sectores", label: "Sectores" },
   { href: "#faq", label: "FAQ" },
-  { href: "#contacto", label: "Contacto" },
+  { href:="#contacto", label: "Contacto" },
 ];
 
 export function Navbar() {
@@ -39,6 +38,9 @@ export function Navbar() {
     localStorage.setItem("nexia-theme", next ? "dark" : "light");
   };
 
+  // Caminho robusto baseado na base do GitHub Pages para evitar erros do Rolldown
+  const logoSrc = `${import.meta.env.BASE_URL}nexia-logo.png`;
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -52,7 +54,7 @@ export function Navbar() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
         <a href="#top" className="flex items-center gap-2.5" aria-label="Nexia Solutions">
           <img
-            src={logoImage}
+            src={logoSrc}
             alt="Nexia Solutions"
             className="h-8 w-auto rounded-lg"
             loading="eager"
