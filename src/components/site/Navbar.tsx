@@ -9,7 +9,7 @@ const links = [
   { href: "#processo", label: "Como Trabalhamos" },
   { href: "#sectores", label: "Sectores" },
   { href: "#faq", label: "FAQ" },
-  { href:="#contacto", label: "Contacto" },
+  { href: "#contacto", label: "Contacto" },
 ];
 
 export function Navbar() {
@@ -38,7 +38,6 @@ export function Navbar() {
     localStorage.setItem("nexia-theme", next ? "dark" : "light");
   };
 
-  // Caminho robusto baseado na base do GitHub Pages para evitar erros do Rolldown
   const logoSrc = `${import.meta.env.BASE_URL}nexia-logo.png`;
 
   return (

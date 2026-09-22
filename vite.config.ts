@@ -1,17 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import tsconfigPaths from 'vite-tsconfig-paths'
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/NexiaSolutions-Website/', // <--- Essencial para encontrar os assets (logótipo, CSS, JS)
+  base: '/NexiaSolutions-Website/',
   plugins: [
     tailwindcss(),
     TanStackRouterVite(), 
     react(), 
-    tsconfigPaths()
   ],
+  resolve: {
+    tsconfigPaths: true, // Suporte nativo recomendado pelo Vite
+  },
   css: {
     transformer: 'postcss',
   },
