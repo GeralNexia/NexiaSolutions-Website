@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logoImage from "@/assets/nexia-logo.png"; // <--- Importação direta corrigida
+import logoImage from "../../assets/nexia-logo.png";
 
 const links = [
   { href: "#servicos", label: "Serviços" },
