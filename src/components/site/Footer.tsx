@@ -124,8 +124,11 @@ export function Footer() {
             © {new Date().getFullYear()} Nexia Solutions. Todos os direitos reservados.
           </p>
           <div className="flex gap-6">
+            {/* Política de Privacidade atualizada para o link da Google */}
             <a 
-              href="#contacto" 
+              href="https://policies.google.com/privacy?hl=pt" 
+              target="_blank" 
+              rel="noopener noreferrer"
               className="text-xs text-muted-foreground hover:text-primary cursor-pointer"
             >
               Política de Privacidade
