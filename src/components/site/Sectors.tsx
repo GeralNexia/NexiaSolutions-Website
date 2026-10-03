@@ -15,10 +15,10 @@ const sectors = [
 
 export function Sectors() {
   return (
-    <section id="sectores" className="bg-surface py-24 lg:py-32">
+    <section id="setores" className="bg-surface py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
-          eyebrow="Sectores"
+          eyebrow="Setores"
           title="Trabalhamos com quem lida com muita informação"
         />
         <div className="mt-14 grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-3">

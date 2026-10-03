@@ -15,7 +15,7 @@ const groups = [
     title: "Empresa",
     links: [
       { label: "Como Trabalhamos", href: "#processo" },
-      { label: "Sectores", href: "#sectores" },
+      { label: "Setores", href: "#setores" },
       { label: "Casos de Utilização", href: "#servicos" },
       { label: "FAQ", href: "#faq" },
     ],
