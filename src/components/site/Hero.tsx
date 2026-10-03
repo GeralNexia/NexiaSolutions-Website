@@ -72,7 +72,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.45 }}
             className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted-foreground"
           >
-            {["Sem tarefas repetitivas", "Integra com o seu ERP", "Dados seguros em Portugal"].map(
+            {["Sem tarefas repetitivas", "Integra com o seu ERP", "Dados seguros em todo o lugar"].map(
               (t) => (
                 <span key={t} className="inline-flex items-center gap-2">
                   <CheckCircle2 className="size-4 text-primary" /> {t}
@@ -100,7 +100,7 @@ function HeroPipeline() {
         <span className="size-2.5 rounded-full bg-destructive/70" />
         <span className="size-2.5 rounded-full bg-chart-4/80" />
         <span className="size-2.5 rounded-full bg-primary/70" />
-        <span className="ml-3 text-xs text-muted-foreground">nexia · pipeline de automação</span>
+        <span className="ml-3 text-xs text-muted-foreground">Nexia Solutions · Pipeline de Automação</span>
       </div>
 
       <div className="space-y-3">
