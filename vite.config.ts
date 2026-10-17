@@ -4,7 +4,7 @@ import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/NexiaSolutions-Website/',
+  base: '/', // Essencial para o domínio próprio www.nexiasolutions.pt
   plugins: [
     tailwindcss(),
     TanStackRouterVite(), 
