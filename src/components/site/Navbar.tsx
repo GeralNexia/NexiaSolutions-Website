@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "#servicos", label: "Serviços" },
-  { href: "#processo", label: "Como Trabalhamos" },
-  { href: "#setores", label: "Setores" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contacto", label: "Contacto" },
+  { id: "servicos", label: "Serviços" },
+  { id: "processo", label: "Como Trabalhamos" },
+  { id: "setores", label: "Setores" },
+  { id: "faq", label: "FAQ" },
+  { id: "contacto", label: "Contacto" },
 ];
 
 export function Navbar() {
@@ -38,6 +38,13 @@ export function Navbar() {
     localStorage.setItem("nexia-theme", next ? "dark" : "light");
   };
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const logoSrc = `${import.meta.env.BASE_URL}nexia-logo.png`;
 
   return (
@@ -51,8 +58,7 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
-        <a 
-          href="#" 
+        <div 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="flex items-center gap-2.5 cursor-pointer" 
           aria-label="Nexia Solutions"
@@ -66,17 +72,18 @@ export function Navbar() {
           <span className="text-[17px] font-semibold tracking-tight">
             Nexia <span className="text-muted-foreground font-normal">Solutions</span>
           </span>
-        </a>
+        </div>
 
+        {/* Links Desktop com Scroll Suave */}
         <div className="hidden items-center gap-1 lg:flex">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent/60 hover:text-foreground cursor-pointer"
+            <button
+              key={l.id}
+              onClick={() => scrollToSection(l.id)}
+              className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent/60 hover:text-foreground cursor-pointer bg-transparent border-none"
             >
               {l.label}
-            </a>
+            </button>
           ))}
         </div>
 
@@ -89,8 +96,12 @@ export function Navbar() {
           >
             {dark ? <Sun /> : <Moon />}
           </Button>
-          <Button variant="hero" className="hidden sm:inline-flex" asChild>
-            <a href="#contacto">Diagnóstico Gratuito</a>
+          <Button 
+            variant="hero" 
+            className="hidden sm:inline-flex"
+            onClick={() => scrollToSection("contacto")}
+          >
+            Diagnóstico Gratuito
           </Button>
           <Button
             variant="ghost"
@@ -104,6 +115,7 @@ export function Navbar() {
         </div>
       </nav>
 
+      {/* Menu Mobile */}
       {open && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
@@ -112,14 +124,16 @@ export function Navbar() {
         >
           <div className="flex flex-col p-4">
             {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:bg-accent/60 hover:text-foreground cursor-pointer"
+              <button
+                key={l.id}
+                onClick={() => {
+                  setOpen(false);
+                  scrollToSection(l.id);
+                }}
+                className="text-left rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:bg-accent/60 hover:text-foreground cursor-pointer bg-transparent border-none"
               >
                 {l.label}
-              </a>
+              </button>
             ))}
           </div>
         </motion.div>
