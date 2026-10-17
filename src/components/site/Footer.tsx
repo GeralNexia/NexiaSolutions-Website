@@ -4,20 +4,20 @@ const groups = [
   {
     title: "Serviços",
     links: [
-      { label: "Automação Empresarial", href: "#servicos" },
-      { label: "Inteligência Artificial", href: "#servicos" },
-      { label: "Software à Medida", href: "#servicos" },
-      { label: "Integração de Sistemas", href: "#servicos" },
-      { label: "Processamento de Documentos", href: "#servicos" },
+      { label: "Automação Empresarial", id: "servicos" },
+      { label: "Inteligência Artificial", id: "servicos" },
+      { label: "Software à Medida", id: "servicos" },
+      { label: "Integração de Sistemas", id: "servicos" },
+      { label: "Processamento de Documentos", id: "servicos" },
     ],
   },
   {
     title: "Empresa",
     links: [
-      { label: "Como Trabalhamos", href: "#processo" },
-      { label: "Setores", href: "#setores" },
-      { label: "Casos de Utilização", href: "#servicos" },
-      { label: "FAQ", href: "#faq" },
+      { label: "Como Trabalhamos", id: "processo" },
+      { label: "Setores", id: "setores" },
+      { label: "Casos de Utilização", id: "servicos" },
+      { label: "FAQ", id: "faq" },
     ],
   },
 ];
@@ -43,17 +43,21 @@ const socials = [
 export function Footer() {
   const logoSrc = `${import.meta.env.BASE_URL}nexia-logo.png`;
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(2,1fr)]">
           <div>
-            <a 
-              href="#" 
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
+            {/* Logótipo sem href="#" para evitar # no URL */}
+            <div 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="flex items-center gap-2.5 cursor-pointer"
             >
               <img
@@ -63,7 +67,7 @@ export function Footer() {
                 loading="lazy"
               />
               <span className="text-[17px] font-semibold tracking-tight">Nexia Solutions</span>
-            </a>
+            </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Transformamos empresas através da tecnologia: automação, Inteligência Artificial e
               software feito à medida.
@@ -100,18 +104,19 @@ export function Footer() {
             </div>
           </div>
 
+          {/* Links de grupos com Scroll Suave */}
           {groups.map((g) => (
             <div key={g.title}>
               <h3 className="text-sm font-semibold">{g.title}</h3>
               <ul className="mt-4 space-y-3">
                 {g.links.map((l) => (
                   <li key={l.label}>
-                    <a
-                      href={l.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-primary cursor-pointer"
+                    <button
+                      onClick={() => scrollToSection(l.id)}
+                      className="text-left text-sm text-muted-foreground transition-colors hover:text-primary cursor-pointer bg-transparent border-none p-0"
                     >
                       {l.label}
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -124,7 +129,6 @@ export function Footer() {
             © {new Date().getFullYear()} Nexia Solutions. Todos os direitos reservados.
           </p>
           <div className="flex gap-6">
-            {/* Política de Privacidade atualizada para o link da Google */}
             <a 
               href="https://policies.google.com/privacy?hl=pt" 
               target="_blank" 
@@ -133,12 +137,12 @@ export function Footer() {
             >
               Política de Privacidade
             </a>
-            <a 
-              href="#contacto" 
-              className="text-xs text-muted-foreground hover:text-primary cursor-pointer"
+            <button
+              onClick={() => scrollToSection("contacto")}
+              className="text-xs text-muted-foreground hover:text-primary cursor-pointer bg-transparent border-none p-0"
             >
               Termos
-            </a>
+            </button>
             <a
               href="https://linkedin.com"
               target="_blank"
