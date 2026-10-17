@@ -2,7 +2,6 @@ import { createRouter as createTanStackRouter, createBrowserHistory } from '@tan
 import { routeTree } from './routeTree.gen'
 import { queryClient } from './queryClient'
 
-// Substituímos o hashHistory pelo browserHistory limpo
 const browserHistory = createBrowserHistory()
 
 export function createRouter() {

@@ -74,7 +74,6 @@ export function Navbar() {
           </span>
         </div>
 
-        {/* Links Desktop com Scroll Suave */}
         <div className="hidden items-center gap-1 lg:flex">
           {links.map((l) => (
             <button
@@ -115,7 +114,6 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Menu Mobile */}
       {open && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}

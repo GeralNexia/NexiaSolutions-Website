@@ -55,7 +55,6 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(2,1fr)]">
           <div>
-            {/* Logótipo sem href="#" para evitar # no URL */}
             <div 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="flex items-center gap-2.5 cursor-pointer"
@@ -104,7 +103,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links de grupos com Scroll Suave */}
           {groups.map((g) => (
             <div key={g.title}>
               <h3 className="text-sm font-semibold">{g.title}</h3>
