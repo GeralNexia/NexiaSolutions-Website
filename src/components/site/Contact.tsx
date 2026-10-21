@@ -1,4 +1,4 @@
-import { type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { Mail, Phone, Send, MapPin } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -8,12 +8,41 @@ import { Textarea } from "@/components/ui/textarea";
 import { Reveal, SectionHeading } from "./Reveal";
 
 export function Contact() {
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Pedido enviado", {
-      description: "A nossa equipa entra em contacto consigo em menos de 24 horas.",
-    });
-    e.currentTarget.reset();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    // Adiciona a tua chave pública do Web3Forms
+    formData.append("access_key", "b99945c3-527f-45b9-a979-6d4456274b23");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast.success("Pedido enviado com sucesso!", {
+          description: "A nossa equipa entra em contacto consigo em menos de 24 horas.",
+        });
+        e.currentTarget.reset();
+      } else {
+        toast.error("Erro ao enviar", {
+          description: data.message || "Ocorreu um erro. Tente novamente mais tarde.",
+        });
+      }
+    } catch (error) {
+      toast.error("Erro de ligação", {
+        description: "Verifique a sua ligação à internet e tente novamente.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -104,8 +133,8 @@ export function Contact() {
                 />
               </div>
 
-              <Button type="submit" variant="hero" size="xl" className="mt-7 w-full">
-                <Send /> Solicitar Diagnóstico Gratuito
+              <Button type="submit" variant="hero" size="xl" className="mt-7 w-full" disabled={isSubmitting}>
+                <Send /> {isSubmitting ? "A enviar..." : "Solicitar Diagnóstico Gratuito"}
               </Button>
               <p className="mt-3 text-center text-xs text-muted-foreground">
                 Os seus dados são tratados de forma confidencial, em conformidade com o RGPD.
