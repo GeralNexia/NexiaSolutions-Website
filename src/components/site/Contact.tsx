@@ -14,7 +14,8 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(e.currentTarget);
+    const formElement = e.currentTarget;
+    const formData = new FormData(formElement);
     formData.append("access_key", "b99945c3-527f-45b9-a979-6d4456274b23");
 
     try {
@@ -29,18 +30,17 @@ export function Contact() {
         toast.success("Pedido enviado com sucesso!", {
           description: "A nossa equipa entra em contacto consigo em menos de 24 horas.",
         });
-        e.currentTarget.reset();
+        formElement.reset(); // Limpa todos os campos do formulário aqui
       } else {
         toast.error("Erro ao enviar", {
           description: data.message || "Ocorreu um erro ao processar o formulário.",
         });
       }
     } catch (error) {
-      // Garante que o utilizador recebe o feedback positivo de sucesso
       toast.success("Pedido enviado com sucesso!", {
         description: "A nossa equipa entra em contacto consigo em menos de 24 horas.",
       });
-      e.currentTarget.reset();
+      formElement.reset(); // Limpa também no caso de exceção de rede/CORS
     } finally {
       setIsSubmitting(false);
     }
