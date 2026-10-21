@@ -15,30 +15,33 @@ export function Contact() {
     setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
-    // Adiciona a tua chave pública do Web3Forms
     formData.append("access_key", "b99945c3-527f-45b9-a979-6d4456274b23");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
+        headers: {
+          "Accept": "application/json"
+        },
         body: formData,
       });
 
       const data = await response.json();
 
-      if (data.success) {
+      if (response.status === 200 && data.success) {
         toast.success("Pedido enviado com sucesso!", {
           description: "A nossa equipa entra em contacto consigo em menos de 24 horas.",
         });
         e.currentTarget.reset();
       } else {
         toast.error("Erro ao enviar", {
-          description: data.message || "Ocorreu um erro. Tente novamente mais tarde.",
+          description: data.message || "Ocorreu um erro ao processar o formulário.",
         });
       }
     } catch (error) {
+      console.error("Erro no fetch:", error);
       toast.error("Erro de ligação", {
-        description: "Verifique a sua ligação à internet e tente novamente.",
+        description: "Não foi possível comunicar com o servidor de envio.",
       });
     } finally {
       setIsSubmitting(false);
