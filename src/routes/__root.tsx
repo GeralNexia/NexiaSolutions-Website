@@ -9,23 +9,23 @@ import { useEffect } from "react";
 
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
+import { I18nProvider, useI18n } from "@/i18n";
 
 function NotFoundComponent() {
+  const { t, lang } = useI18n();
   const logoSrc = `${import.meta.env.BASE_URL}nexia-logo.png`;
-  const quickLinks = [
-    { label: "Serviços", href: "/#servicos" },
-    { label: "Como Trabalhamos", href: "/#processo" },
-    { label: "FAQ", href: "/#faq" },
-    { label: "Contacto", href: "/#contacto" },
-  ];
+  const quickLinks = (["servicos", "processo", "faq", "contacto"] as const).map((id) => ({
+    label: t.nav.links[id],
+    href: `/#${id}`,
+  }));
 
   useEffect(() => {
     const previous = document.title;
-    document.title = "Página não encontrada | Nexia Solutions";
+    document.title = `${t.notFound.pageTitle} | Nexia Solutions`;
     return () => {
       document.title = previous;
     };
-  }, []);
+  }, [t, lang]);
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-5 py-16">
@@ -41,11 +41,10 @@ function NotFoundComponent() {
 
         <p className="text-gradient mt-10 text-8xl font-bold tracking-tighter sm:text-9xl">404</p>
         <h1 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">
-          Esta página não foi automatizada… porque não existe.
+          {t.notFound.title}
         </h1>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base">
-          A página que procura pode ter sido movida, removida ou o endereço pode estar incorreto.
-          Mas podemos ajudá-lo a encontrar o caminho certo.
+          {t.notFound.text}
         </p>
 
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
@@ -53,18 +52,18 @@ function NotFoundComponent() {
             to="/"
             className="gradient-primary inline-flex h-11 items-center justify-center gap-2 rounded-lg px-6 text-sm font-medium text-primary-foreground shadow-elegant transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
           >
-            Voltar ao início
+            {t.notFound.home}
           </Link>
           <a
             href="/#contacto"
             className="glass-panel inline-flex h-11 items-center justify-center gap-2 rounded-lg px-6 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/50"
           >
-            Pedir diagnóstico gratuito
+            {t.notFound.cta}
           </a>
         </div>
 
         <div className="mt-10 border-t border-border pt-6">
-          <p className="text-xs tracking-wide text-muted-foreground uppercase">Talvez procure</p>
+          <p className="text-xs tracking-wide text-muted-foreground uppercase">{t.notFound.maybe}</p>
           <div className="mt-3 flex flex-wrap justify-center gap-2">
             {quickLinks.map((l) => (
               <a
@@ -85,6 +84,7 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
+  const { t } = useI18n();
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
@@ -93,10 +93,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          Não foi possível carregar esta página
+          {t.error.title}
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Ocorreu um erro inesperado. Tente atualizar a página ou volte ao início.
+          {t.error.text}
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -106,13 +106,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Tentar novamente
+            {t.error.retry}
           </button>
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Voltar ao início
+            {t.error.home}
           </Link>
         </div>
       </div>
@@ -131,8 +131,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
-      <Toaster position="top-center" richColors />
+      <I18nProvider>
+        <Outlet />
+        <Toaster position="top-center" richColors />
+      </I18nProvider>
     </QueryClientProvider>
   );
 }

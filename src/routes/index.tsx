@@ -13,6 +13,7 @@ import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { useEffect } from "react";
 import { scrollToHashOnLoad } from "@/lib/navigation";
+import { useI18n } from "@/i18n";
 
 const description =
   "Automação de processos, Inteligência Artificial, software à medida e integração de sistemas para reduzir custos e eliminar tarefas repetitivas.";
@@ -53,9 +54,18 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const { t } = useI18n();
+
   useEffect(() => {
     scrollToHashOnLoad();
   }, []);
+
+  useEffect(() => {
+    document.title = t.meta.title;
+    document
+      .querySelector<HTMLMetaElement>('meta[name="description"]')
+      ?.setAttribute("content", t.meta.description);
+  }, [t]);
 
   return (
     <div className="min-h-screen bg-background">

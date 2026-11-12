@@ -1,17 +1,12 @@
 import { motion } from "motion/react";
 import { ArrowRight, FileText, Sparkles, Database, BarChart3, Workflow, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useI18n } from "@/i18n";
 
-const steps = [
-  { icon: FileText, label: "PDF", detail: "Documento recebido" },
-  { icon: Sparkles, label: "IA", detail: "Leitura inteligente" },
-  { icon: Database, label: "Extração de Dados", detail: "Campos estruturados" },
-  { icon: BarChart3, label: "Dashboard", detail: "Visão em tempo real" },
-  { icon: Workflow, label: "Automação", detail: "Fluxo disparado" },
-  { icon: CheckCircle2, label: "Resultado", detail: "Tempo poupado" },
-];
+const stepIcons = [FileText, Sparkles, Database, BarChart3, Workflow, CheckCircle2];
 
 export function Hero() {
+  const { t } = useI18n();
   return (
     <section id="top" className="relative overflow-hidden pt-32 pb-20 lg:pt-44 lg:pb-28">
       <div className="gradient-hero pointer-events-none absolute inset-0" />
@@ -29,7 +24,7 @@ export function Hero() {
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-70" />
               <span className="relative inline-flex size-2 rounded-full bg-primary" />
             </span>
-            Automação e IA para empresas portuguesas
+            {t.hero.badge}
           </motion.span>
 
           <motion.h1
@@ -38,8 +33,8 @@ export function Hero() {
             transition={{ duration: 0.75, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
           >
-            Automatizamos processos.{" "}
-            <span className="text-gradient">Potenciamos empresas.</span>
+            {t.hero.title1}{" "}
+            <span className="text-gradient">{t.hero.title2}</span>
           </motion.h1>
 
           <motion.p
@@ -48,9 +43,7 @@ export function Hero() {
             transition={{ duration: 0.75, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
           >
-            Desenvolvemos soluções inteligentes com Inteligência Artificial, automação e software
-            personalizado para reduzir custos, eliminar tarefas repetitivas e aumentar a
-            produtividade.
+            {t.hero.subtitle}
           </motion.p>
 
           <motion.div
@@ -61,7 +54,7 @@ export function Hero() {
           >
             <Button variant="hero" size="xl" asChild>
               <a href="#contacto">
-                Pedir Diagnóstico Gratuito <ArrowRight />
+                {t.hero.cta} <ArrowRight />
               </a>
             </Button>
           </motion.div>
@@ -72,7 +65,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.45 }}
             className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted-foreground"
           >
-            {["Sem tarefas repetitivas", "Integra com o seu ERP", "Dados seguros em todo o lugar"].map(
+            {t.hero.checks.map(
               (t) => (
                 <span key={t} className="inline-flex items-center gap-2">
                   <CheckCircle2 className="size-4 text-primary" /> {t}
@@ -89,6 +82,8 @@ export function Hero() {
 }
 
 function HeroPipeline() {
+  const { t } = useI18n();
+  const steps = t.hero.steps.map((s, i) => ({ ...s, icon: stepIcons[i] }));
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.96, y: 30 }}
@@ -100,13 +95,13 @@ function HeroPipeline() {
         <span className="size-2.5 rounded-full bg-destructive/70" />
         <span className="size-2.5 rounded-full bg-chart-4/80" />
         <span className="size-2.5 rounded-full bg-primary/70" />
-        <span className="ml-3 text-xs text-muted-foreground">Nexia Solutions · Pipeline de Automação</span>
+        <span className="ml-3 text-xs text-muted-foreground">{t.hero.pipelineTitle}</span>
       </div>
 
       <div className="space-y-3">
         {steps.map((s, i) => (
           <motion.div
-            key={s.label}
+            key={i}
             initial={{ opacity: 0.25, x: -10 }}
             animate={{ opacity: [0.25, 1, 1, 0.35], x: [-10, 0, 0, 0] }}
             transition={{

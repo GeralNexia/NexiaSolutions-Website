@@ -1,28 +1,12 @@
+import { useI18n } from "@/i18n";
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, MessageCircle, Mail, Phone } from "lucide-react";
 import { legalPages, LIVRO_RECLAMACOES_URL } from "@/lib/company";
 import { goHome, goToSection } from "@/lib/navigation";
 
-const groups = [
-  {
-    title: "Serviços",
-    links: [
-      { label: "Automação Empresarial", id: "servicos" },
-      { label: "Inteligência Artificial", id: "servicos" },
-      { label: "Software à Medida", id: "servicos" },
-      { label: "Integração de Sistemas", id: "servicos" },
-      { label: "Processamento de Documentos", id: "servicos" },
-    ],
-  },
-  {
-    title: "Empresa",
-    links: [
-      { label: "Como Trabalhamos", id: "processo" },
-      { label: "Setores", id: "setores" },
-      { label: "Casos de Utilização", id: "servicos" },
-      { label: "FAQ", id: "faq" },
-    ],
-  },
+const groupIds = [
+  ["servicos", "servicos", "servicos", "servicos", "servicos"],
+  ["processo", "setores", "servicos", "faq"],
 ];
 
 const socials = [
@@ -44,6 +28,11 @@ const socials = [
 ];
 
 export function Footer() {
+  const { t } = useI18n();
+  const groups = [
+    { title: t.footer.servicesTitle, links: t.footer.services.map((label, i) => ({ label, id: groupIds[0][i] })) },
+    { title: t.footer.companyTitle, links: t.footer.company.map((label, i) => ({ label, id: groupIds[1][i] })) },
+  ];
   const logoSrc = `${import.meta.env.BASE_URL}nexia-logo.png`;
 
   const scrollToSection = goToSection;
@@ -66,8 +55,7 @@ export function Footer() {
               <span className="text-[17px] font-semibold tracking-tight">Nexia Solutions</span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Transformamos empresas através da tecnologia: automação, Inteligência Artificial e
-              software feito à medida.
+              {t.footer.tagline}
             </p>
             <div className="mt-4 flex flex-col gap-2 text-sm">
               <a
@@ -120,7 +108,7 @@ export function Footer() {
           ))}
 
           <div>
-            <h3 className="text-sm font-semibold">Legal</h3>
+            <h3 className="text-sm font-semibold">{t.footer.legalTitle}</h3>
             <ul className="mt-4 space-y-3">
               {legalPages.map((p) => (
                 <li key={p.to}>
@@ -128,7 +116,7 @@ export function Footer() {
                     to={p.to}
                     className="text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
-                    {p.label}
+                    {t.legal.pages[p.to]}
                   </Link>
                 </li>
               ))}
@@ -139,24 +127,24 @@ export function Footer() {
               rel="noopener noreferrer"
               className="mt-5 inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-xs font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary"
             >
-              Livro de Reclamações Eletrónico
+              {t.footer.complaintsBook}
             </a>
           </div>
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Nexia Solutions. Todos os direitos reservados.
+            © {new Date().getFullYear()} Nexia Solutions. {t.footer.rights}
           </p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <Link to="/politica-de-privacidade" className="text-xs text-muted-foreground hover:text-primary">
-              Privacidade
+              {t.footer.privacy}
             </Link>
             <Link to="/termos-de-utilizacao" className="text-xs text-muted-foreground hover:text-primary">
-              Termos
+              {t.footer.terms}
             </Link>
             <Link to="/politica-de-cookies" className="text-xs text-muted-foreground hover:text-primary">
-              Cookies
+              {t.footer.cookies}
             </Link>
           </div>
         </div>

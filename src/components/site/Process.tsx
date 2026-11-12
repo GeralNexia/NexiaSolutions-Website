@@ -1,28 +1,25 @@
 import { Search, ClipboardList, Code2, Rocket, LifeBuoy } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
+import { useI18n } from "@/i18n";
 
-const steps = [
-  { icon: Search, title: "Diagnóstico", text: "Analisamos os seus processos e identificamos oportunidades de automação." },
-  { icon: ClipboardList, title: "Levantamento de requisitos", text: "Definimos âmbito, integrações, dados e objetivos mensuráveis." },
-  { icon: Code2, title: "Desenvolvimento", text: "Construímos a solução à medida, com entregas iterativas e visíveis." },
-  { icon: Rocket, title: "Implementação", text: "Colocamos em produção, formamos a equipa e migramos os dados." },
-  { icon: LifeBuoy, title: "Suporte", text: "Acompanhamento contínuo, melhorias e monitorização dos fluxos." },
-];
+const icons = [Search, ClipboardList, Code2, Rocket, LifeBuoy];
 
 export function Process() {
+  const { t } = useI18n();
+  const steps = t.process.items.map((s, i) => ({ ...s, icon: icons[i] }));
   return (
     <section id="processo" className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
-          eyebrow="Como Trabalhamos"
-          title="Um percurso claro, do primeiro contacto ao suporte"
+          eyebrow={t.process.eyebrow}
+          title={t.process.title}
         />
 
         <div className="relative mx-auto mt-16 max-w-3xl">
           <div className="absolute top-0 bottom-0 left-6 w-px bg-border md:left-1/2" />
           <div className="space-y-10 md:space-y-2">
             {steps.map((s, i) => (
-              <Reveal key={s.title} delay={i * 0.08}>
+              <Reveal key={i} delay={i * 0.08}>
                 <div
                   className={`relative flex gap-6 md:w-1/2 ${
                     i % 2 === 0 ? "md:pr-12" : "md:ml-auto md:flex-row-reverse md:pl-12"
@@ -33,7 +30,7 @@ export function Process() {
                   </span>
                   <div className={`ml-18 md:ml-0 ${i % 2 === 0 ? "md:text-right" : ""}`}>
                     <p className="text-xs font-medium tracking-wide text-primary uppercase">
-                      Etapa {i + 1}
+                      {t.process.step} {i + 1}
                     </p>
                     <h3 className="mt-1 text-lg font-semibold">{s.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.text}</p>

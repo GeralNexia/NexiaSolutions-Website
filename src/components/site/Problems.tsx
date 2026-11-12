@@ -1,28 +1,24 @@
 import { Clock, Hand, AlertTriangle, Files, Unplug, FileSearch, ArrowRight } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
+import { useI18n } from "@/i18n";
 
-const problems = [
-  { icon: Clock, title: "Horas desperdiçadas", text: "Equipas presas em tarefas repetitivas de baixo valor." },
-  { icon: Hand, title: "Processos manuais", text: "Fluxos dependentes de cópias, colagens e memória humana." },
-  { icon: AlertTriangle, title: "Erros humanos", text: "Falhas de introdução de dados com custo real." },
-  { icon: Files, title: "Informação espalhada", text: "Dados em emails, Excel, drives e pastas partilhadas." },
-  { icon: Unplug, title: "Falta de integração", text: "Sistemas que não comunicam entre si." },
-  { icon: FileSearch, title: "PDFs analisados à mão", text: "Contratos e faturas lidos linha a linha." },
-];
+const icons = [Clock, Hand, AlertTriangle, Files, Unplug, FileSearch];
 
 export function Problems() {
+  const { t } = useI18n();
+  const problems = t.problems.items.map((p, i) => ({ ...p, icon: icons[i] }));
   return (
     <section className="bg-surface py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
-          eyebrow="O Problema"
-          title="O que trava a sua operação todos os dias"
-          description="Antes de automatizar, identificamos exatamente onde o tempo e o dinheiro estão a escapar."
+          eyebrow={t.problems.eyebrow}
+          title={t.problems.title}
+          description={t.problems.description}
         />
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {problems.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.07}>
+            <Reveal key={i} delay={i * 0.07}>
               <article className="card-hover h-full rounded-2xl border border-border bg-card p-6 shadow-soft">
                 <span className="flex size-11 items-center justify-center rounded-xl bg-accent">
                   <p.icon className="size-5 text-accent-foreground" />
@@ -41,7 +37,7 @@ export function Problems() {
             >
               <ArrowRight className="size-5 text-primary-foreground transition-transform duration-300 group-hover:translate-x-1" />
               <p className="text-lg font-semibold text-primary-foreground">
-                Nós resolvemos estes problemas.
+                {t.problems.cta}
               </p>
             </a>
         </Reveal>

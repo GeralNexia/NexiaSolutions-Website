@@ -127,26 +127,26 @@
       </a>
 
       <p class="code" aria-hidden="true">404</p>
-      <h1>Esta página não foi automatizada… porque não existe.</h1>
-      <p class="lead">
+      <h1 data-i18n="title">Esta página não foi automatizada… porque não existe.</h1>
+      <p class="lead" data-i18n="text">
         A página que procura pode ter sido movida, removida ou o endereço pode estar incorreto.
         Mas podemos ajudá-lo a encontrar o caminho certo.
       </p>
 
       <div class="actions">
-        <a class="btn btn-primary" href="/">Voltar ao início</a>
-        <a class="btn btn-ghost" href="/#contacto">Pedir diagnóstico gratuito</a>
+        <a class="btn btn-primary" href="/" data-i18n="home">Voltar ao início</a>
+        <a class="btn btn-ghost" href="/#contacto" data-i18n="cta">Pedir diagnóstico gratuito</a>
       </div>
 
       <div class="more">
-        <small>Talvez procure</small>
+        <small data-i18n="maybe">Talvez procure</small>
         <nav class="chips" aria-label="Ligações úteis">
-          <a href="/#servicos">Serviços</a>
-          <a href="/#processo">Como Trabalhamos</a>
+          <a href="/#servicos" data-i18n="servicos">Serviços</a>
+          <a href="/#processo" data-i18n="processo">Como Trabalhamos</a>
           <a href="/#faq">FAQ</a>
-          <a href="/#contacto">Contacto</a>
-          <a href="/politica-de-privacidade">Política de Privacidade</a>
-          <a href="/livro-de-reclamacoes">Livro de Reclamações</a>
+          <a href="/#contacto" data-i18n="contacto">Contacto</a>
+          <a href="/politica-de-privacidade" data-i18n="privacy">Política de Privacidade</a>
+          <a href="/livro-de-reclamacoes" data-i18n="book">Livro de Reclamações</a>
         </nav>
       </div>
 
@@ -154,5 +154,32 @@
         <a href="mailto:geralnexia@gmail.com">geralnexia@gmail.com</a> · <a href="tel:+351924890248">+351 924 890 248</a>
       </footer>
     </main>
+    <script>
+      (function () {
+        var dict = {
+          en: { page: "Page not found", title: "This page wasn't automated… because it doesn't exist.", text: "The page you're looking for may have been moved or removed, or the address may be incorrect. But we can help you find the right way.", home: "Back to home", cta: "Get a free assessment", maybe: "Maybe you're looking for", servicos: "Services", processo: "How We Work", contacto: "Contact", privacy: "Privacy Policy", book: "Complaints Book" },
+          fr: { page: "Page introuvable", title: "Cette page n'a pas été automatisée… car elle n'existe pas.", text: "La page que vous recherchez a peut-être été déplacée ou supprimée, ou l'adresse est incorrecte. Mais nous pouvons vous aider à retrouver votre chemin.", home: "Retour à l'accueil", cta: "Demander un diagnostic gratuit", maybe: "Vous cherchez peut-être", servicos: "Services", processo: "Notre méthode", contacto: "Contact", privacy: "Politique de confidentialité", book: "Livre de réclamations" },
+          es: { page: "Página no encontrada", title: "Esta página no se automatizó… porque no existe.", text: "Es posible que la página que busca se haya movido o eliminado, o que la dirección sea incorrecta. Pero podemos ayudarle a encontrar el camino correcto.", home: "Volver al inicio", cta: "Solicitar diagnóstico gratuito", maybe: "Quizás busca", servicos: "Servicios", processo: "Cómo Trabajamos", contacto: "Contacto", privacy: "Política de Privacidad", book: "Libro de Reclamaciones" }
+        };
+        var lang = null;
+        try { lang = localStorage.getItem("nexia-lang"); } catch (e) {}
+        if (!lang) {
+          var navs = navigator.languages || [navigator.language];
+          for (var i = 0; i < navs.length; i++) {
+            var c = (navs[i] || "").slice(0, 2).toLowerCase();
+            if (c === "pt" || dict[c]) { lang = c; break; }
+          }
+        }
+        var d = dict[lang];
+        if (!d) return;
+        document.documentElement.lang = lang;
+        document.title = d.page + " | Nexia Solutions";
+        var els = document.querySelectorAll("[data-i18n]");
+        for (var j = 0; j < els.length; j++) {
+          var k = els[j].getAttribute("data-i18n");
+          if (d[k]) els[j].textContent = d[k];
+        }
+      })();
+    </script>
   </body>
 </html>

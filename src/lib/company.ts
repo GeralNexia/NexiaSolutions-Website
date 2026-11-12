@@ -18,8 +18,8 @@ export const company = {
   phoneHref: "tel:+351924890248",
   website: "https://www.nexiasolutions.pt",
   country: "Portugal",
-  /** Data da última atualização dos documentos legais. */
-  legalLastUpdated: "12 de novembro de 2026",
+  /** Data da última atualização dos documentos legais (AAAA-MM-DD). */
+  legalLastUpdated: "2026-11-12",
 } as const;
 
 export const legalPages = [

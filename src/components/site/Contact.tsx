@@ -1,3 +1,4 @@
+import { useI18n } from "@/i18n";
 import { useState, type FormEvent } from "react";
 import { Mail, Phone, Send, MapPin } from "lucide-react";
 import { toast } from "sonner";
@@ -9,6 +10,8 @@ import { Link } from "@tanstack/react-router";
 import { Reveal, SectionHeading } from "./Reveal";
 
 export function Contact() {
+  const { t } = useI18n();
+  const c = t.contact;
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -28,19 +31,13 @@ export function Contact() {
       const data = await response.json();
 
       if (data.success) {
-        toast.success("Pedido enviado com sucesso!", {
-          description: "A nossa equipa entra em contacto consigo em menos de 24 horas.",
-        });
+        toast.success(c.successTitle, { description: c.successDesc });
         formElement.reset(); // Limpa todos os campos do formulário aqui
       } else {
-        toast.error("Erro ao enviar", {
-          description: data.message || "Ocorreu um erro ao processar o formulário.",
-        });
+        toast.error(c.errorTitle, { description: data.message || c.errorDesc });
       }
     } catch (error) {
-      toast.success("Pedido enviado com sucesso!", {
-        description: "A nossa equipa entra em contacto consigo em menos de 24 horas.",
-      });
+      toast.success(c.successTitle, { description: c.successDesc });
       formElement.reset(); // Limpa também no caso de exceção de rede/CORS
     } finally {
       setIsSubmitting(false);
@@ -52,17 +49,17 @@ export function Contact() {
       <div className="gradient-hero pointer-events-none absolute inset-0" />
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
-          eyebrow="Contacto"
-          title="Solicite o seu diagnóstico gratuito"
-          description="Conte-nos o problema que quer resolver. Respondemos com uma proposta concreta."
+          eyebrow={c.eyebrow}
+          title={c.title}
+          description={c.description}
         />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-[1fr_1.5fr]">
           <Reveal>
             <div className="glass-panel h-full rounded-3xl p-8 shadow-soft">
-              <h3 className="text-lg font-semibold">Fale connosco</h3>
+              <h3 className="text-lg font-semibold">{c.talkTitle}</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Prefere falar diretamente? Estamos disponíveis.
+                {c.talkText}
               </p>
               <div className="mt-8 space-y-5">
                 <a
@@ -87,7 +84,7 @@ export function Contact() {
                   <span className="flex size-10 items-center justify-center rounded-xl bg-accent">
                     <MapPin className="size-4.5 text-accent-foreground" />
                   </span>
-                  Portugal · trabalho remoto e presencial
+                  {c.location}
                 </div>
               </div>
             </div>
@@ -99,50 +96,49 @@ export function Contact() {
               className="rounded-3xl border border-border bg-card p-8 shadow-elegant"
             >
               <div className="grid gap-5 sm:grid-cols-2">
-                <Field id="nome" label="Nome" required placeholder="O seu nome" />
-                <Field id="empresa" label="Empresa" placeholder="Nome da empresa" />
+                <Field id="nome" label={c.fields.nome.label} required placeholder={c.fields.nome.placeholder} />
+                <Field id="empresa" label={c.fields.empresa.label} placeholder={c.fields.empresa.placeholder} />
                 <Field
                   id="email"
-                  label="Email"
+                  label={c.fields.email.label}
                   type="email"
                   required
-                  placeholder="nome@empresa.pt"
+                  placeholder={c.fields.email.placeholder}
                 />
-                <Field id="telefone" label="Telefone" type="tel" placeholder="+351 900 000 000" />
+                <Field id="telefone" label={c.fields.telefone.label} type="tel" placeholder={c.fields.telefone.placeholder} />
                 <Field
                   id="colaboradores"
-                  label="Número de colaboradores"
+                  label={c.fields.colaboradores.label}
                   type="number"
                   min={1}
-                  placeholder="Ex.: 25"
+                  placeholder={c.fields.colaboradores.placeholder}
                 />
-                <Field id="area" label="Área de atividade" placeholder="Ex.: Contabilidade" />
+                <Field id="area" label={c.fields.area.label} placeholder={c.fields.area.placeholder} />
               </div>
 
               <div className="mt-5 grid gap-2">
-                <Label htmlFor="problema">Problema que quer resolver</Label>
-                <Input id="problema" name="problema" placeholder="Ex.: Leitura manual de faturas" />
+                <Label htmlFor="problema">{c.fields.problema.label}</Label>
+                <Input id="problema" name="problema" placeholder={c.fields.problema.placeholder} />
               </div>
 
               <div className="mt-5 grid gap-2">
-                <Label htmlFor="descricao">Descreva o problema</Label>
+                <Label htmlFor="descricao">{c.fields.descricao.label}</Label>
                 <Textarea
                   id="descricao"
                   name="descricao"
                   rows={5}
                   required
-                  placeholder="Que processos são manuais hoje? Que sistemas usa? Qual o volume mensal?"
+                  placeholder={c.fields.descricao.placeholder}
                 />
               </div>
 
               <Button type="submit" variant="hero" size="xl" className="mt-7 w-full" disabled={isSubmitting}>
-                <Send /> {isSubmitting ? "A enviar..." : "Solicitar Diagnóstico Gratuito"}
+                <Send /> {isSubmitting ? c.submitting : c.submit}
               </Button>
               <p className="mt-3 text-center text-xs text-muted-foreground">
-                Os seus dados são tratados de forma confidencial, em conformidade com o RGPD.
-                Saiba mais na nossa{" "}
+                {c.privacyNote}{" "}
                 <Link to="/politica-de-privacidade" className="underline underline-offset-2 hover:text-primary">
-                  Política de Privacidade
+                  {c.privacyLink}
                 </Link>
                 .
               </p>

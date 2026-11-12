@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Check, Globe, Menu, Moon, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { goHome, goToSection } from "@/lib/navigation";
+import { languages, useI18n } from "@/i18n";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-const links = [
-  { id: "servicos", label: "Serviços" },
-  { id: "processo", label: "Como Trabalhamos" },
-  { id: "setores", label: "Setores" },
-  { id: "faq", label: "FAQ" },
-  { id: "contacto", label: "Contacto" },
-];
+const linkIds = ["servicos", "processo", "setores", "faq", "contacto"] as const;
 
 export function Navbar() {
+  const { t, lang, setLang } = useI18n();
+  const links = linkIds.map((id) => ({ id, label: t.nav.links[id] }));
+  const currentLang = languages.find((l) => l.code === lang) ?? languages[0];
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(false);
@@ -82,12 +86,33 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="gap-1.5 px-2" aria-label={t.nav.language}>
+                <Globe />
+                <span className="text-xs font-medium">{currentLang.short}</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="min-w-40">
+              {languages.map((l) => (
+                <DropdownMenuItem
+                  key={l.code}
+                  onSelect={() => setLang(l.code)}
+                  className="cursor-pointer justify-between"
+                  lang={l.code}
+                >
+                  {l.label}
+                  {l.code === lang && <Check className="size-4 text-primary" />}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Button
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
-            aria-label="Alternar modo escuro"
+            aria-label={t.nav.toggleTheme}
           >
             {dark ? <Sun /> : <Moon />}
           </Button>
@@ -96,14 +121,14 @@ export function Navbar() {
             className="hidden sm:inline-flex"
             onClick={() => scrollToSection("contacto")}
           >
-            Diagnóstico Gratuito
+            {t.nav.cta}
           </Button>
           <Button
             variant="ghost"
             size="icon"
             className="lg:hidden"
             onClick={() => setOpen((v) => !v)}
-            aria-label="Abrir menu"
+            aria-label={t.nav.openMenu}
           >
             {open ? <X /> : <Menu />}
           </Button>
