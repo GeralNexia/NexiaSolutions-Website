@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { goHome, goToSection } from "@/lib/navigation";
 
 const links = [
   { id: "servicos", label: "Serviços" },
@@ -38,12 +39,7 @@ export function Navbar() {
     localStorage.setItem("nexia-theme", next ? "dark" : "light");
   };
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const scrollToSection = goToSection;
 
   const logoSrc = `${import.meta.env.BASE_URL}nexia-logo.png`;
 
@@ -59,7 +55,7 @@ export function Navbar() {
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
         <div 
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={goHome}
           className="flex items-center gap-2.5 cursor-pointer" 
           aria-label="Nexia Solutions"
         >

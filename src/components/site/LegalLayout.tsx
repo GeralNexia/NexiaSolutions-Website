@@ -1,0 +1,125 @@
+import { useEffect, type ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
+import { ArrowLeft } from "lucide-react";
+import { Navbar } from "@/components/site/Navbar";
+import { Footer } from "@/components/site/Footer";
+import { company, legalPages } from "@/lib/company";
+
+export function LegalLayout({
+  title,
+  description,
+  children,
+}: {
+  title: string;
+  description: string;
+  children: ReactNode;
+}) {
+  useEffect(() => {
+    const previous = document.title;
+    document.title = `${title} | ${company.brand}`;
+    const meta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    const previousDescription = meta?.content;
+    if (meta) meta.content = description;
+    window.scrollTo(0, 0);
+    return () => {
+      document.title = previous;
+      if (meta && previousDescription !== undefined) meta.content = previousDescription;
+    };
+  }, [title, description]);
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main className="relative overflow-hidden pt-28 pb-24 lg:pt-36">
+        <div className="gradient-hero pointer-events-none absolute inset-x-0 top-0 h-96" />
+        <div className="relative mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-[220px_1fr] lg:px-8">
+          <aside className="hidden lg:block">
+            <nav aria-label="Documentos legais" className="sticky top-28 space-y-1">
+              <p className="mb-3 px-3 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+                Informação legal
+              </p>
+              {legalPages.map((p) => (
+                <Link
+                  key={p.to}
+                  to={p.to}
+                  className="block rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent/60 hover:text-foreground"
+                  activeProps={{ className: "bg-accent text-accent-foreground font-medium" }}
+                >
+                  {p.label}
+                </Link>
+              ))}
+            </nav>
+          </aside>
+
+          <article className="min-w-0">
+            <Link
+              to="/"
+              className="flex w-fit items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-primary"
+            >
+              <ArrowLeft className="size-4" /> Voltar ao início
+            </Link>
+            <span className="mt-6 inline-flex items-center rounded-full border border-border bg-accent/60 px-3 py-1 text-xs font-medium tracking-wide text-accent-foreground uppercase">
+              Informação legal
+            </span>
+            <h1 className="mt-4 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              {title}
+            </h1>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Última atualização: {company.legalLastUpdated}
+            </p>
+
+            <div className="legal-prose mt-10 rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-10">
+              {children}
+            </div>
+
+            <nav
+              aria-label="Outros documentos legais"
+              className="mt-10 flex flex-wrap gap-2 lg:hidden"
+            >
+              {legalPages.map((p) => (
+                <Link
+                  key={p.to}
+                  to={p.to}
+                  className="rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                  activeProps={{ className: "border-primary/50 text-primary" }}
+                >
+                  {p.label}
+                </Link>
+              ))}
+            </nav>
+          </article>
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+/** Bloco de identificação do responsável, reutilizado nos documentos. */
+export function CompanyIdentification() {
+  return (
+    <ul>
+      <li>
+        <strong>Entidade:</strong> {company.legalName || company.brand}
+        {company.legalName && company.legalName !== company.brand ? ` (${company.brand})` : ""}
+      </li>
+      {company.nif && (
+        <li>
+          <strong>NIF:</strong> {company.nif}
+        </li>
+      )}
+      {company.address && (
+        <li>
+          <strong>Morada:</strong> {company.address}
+        </li>
+      )}
+      <li>
+        <strong>Email:</strong> <a href={`mailto:${company.email}`}>{company.email}</a>
+      </li>
+      <li>
+        <strong>Telefone:</strong> <a href={company.phoneHref}>{company.phone}</a> (chamada para
+        rede móvel nacional)
+      </li>
+    </ul>
+  );
+}

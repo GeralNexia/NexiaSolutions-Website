@@ -1,4 +1,7 @@
+import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, MessageCircle, Mail, Phone } from "lucide-react";
+import { legalPages, LIVRO_RECLAMACOES_URL } from "@/lib/company";
+import { goHome, goToSection } from "@/lib/navigation";
 
 const groups = [
   {
@@ -43,20 +46,15 @@ const socials = [
 export function Footer() {
   const logoSrc = `${import.meta.env.BASE_URL}nexia-logo.png`;
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const scrollToSection = goToSection;
 
   return (
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(2,1fr)]">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div>
             <div 
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onClick={goHome}
               className="flex items-center gap-2.5 cursor-pointer"
             >
               <img
@@ -120,35 +118,46 @@ export function Footer() {
               </ul>
             </div>
           ))}
+
+          <div>
+            <h3 className="text-sm font-semibold">Legal</h3>
+            <ul className="mt-4 space-y-3">
+              {legalPages.map((p) => (
+                <li key={p.to}>
+                  <Link
+                    to={p.to}
+                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    {p.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={LIVRO_RECLAMACOES_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-xs font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+            >
+              Livro de Reclamações Eletrónico
+            </a>
+          </div>
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Nexia Solutions. Todos os direitos reservados.
           </p>
-          <div className="flex gap-6">
-            <a 
-              href="https://policies.google.com/privacy?hl=pt" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-xs text-muted-foreground hover:text-primary cursor-pointer"
-            >
-              Política de Privacidade
-            </a>
-            <button
-              onClick={() => scrollToSection("contacto")}
-              className="text-xs text-muted-foreground hover:text-primary cursor-pointer bg-transparent border-none p-0"
-            >
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <Link to="/politica-de-privacidade" className="text-xs text-muted-foreground hover:text-primary">
+              Privacidade
+            </Link>
+            <Link to="/termos-de-utilizacao" className="text-xs text-muted-foreground hover:text-primary">
               Termos
-            </button>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-muted-foreground hover:text-primary"
-            >
-              LinkedIn
-            </a>
+            </Link>
+            <Link to="/politica-de-cookies" className="text-xs text-muted-foreground hover:text-primary">
+              Cookies
+            </Link>
           </div>
         </div>
       </div>

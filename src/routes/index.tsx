@@ -11,6 +11,8 @@ import { UseCases } from "@/components/site/UseCases";
 import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
+import { useEffect } from "react";
+import { scrollToHashOnLoad } from "@/lib/navigation";
 
 const description =
   "Automação de processos, Inteligência Artificial, software à medida e integração de sistemas para reduzir custos e eliminar tarefas repetitivas.";
@@ -39,7 +41,10 @@ export const Route = createFileRoute("/")({
           email: "geralnexia@gmail.com",
           telephone: "+351924890248",
           areaServed: "PT",
-          sameAs: ["https://facebook.com", "https://instagram.com", "https://linkedin.com"],
+          sameAs: [
+            "https://www.facebook.com/profile.php?id=61593294254599",
+            "https://www.instagram.com/nexia__solutions",
+          ],
         }),
       },
     ],
@@ -48,6 +53,10 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  useEffect(() => {
+    scrollToHashOnLoad();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Link } from "@tanstack/react-router";
 import { Reveal, SectionHeading } from "./Reveal";
 
 export function Contact() {
@@ -139,6 +140,11 @@ export function Contact() {
               </Button>
               <p className="mt-3 text-center text-xs text-muted-foreground">
                 Os seus dados são tratados de forma confidencial, em conformidade com o RGPD.
+                Saiba mais na nossa{" "}
+                <Link to="/politica-de-privacidade" className="underline underline-offset-2 hover:text-primary">
+                  Política de Privacidade
+                </Link>
+                .
               </p>
             </form>
           </Reveal>

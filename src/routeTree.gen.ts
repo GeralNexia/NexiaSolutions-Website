@@ -10,33 +10,89 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LivroDeReclamacoesRouteImport } from './routes/livro-de-reclamacoes'
+import { Route as PoliticaDeCookiesRouteImport } from './routes/politica-de-cookies'
+import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
+import { Route as TermosDeUtilizacaoRouteImport } from './routes/termos-de-utilizacao'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LivroDeReclamacoesRoute = LivroDeReclamacoesRouteImport.update({
+  id: '/livro-de-reclamacoes',
+  path: '/livro-de-reclamacoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliticaDeCookiesRoute = PoliticaDeCookiesRouteImport.update({
+  id: '/politica-de-cookies',
+  path: '/politica-de-cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
+  id: '/politica-de-privacidade',
+  path: '/politica-de-privacidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermosDeUtilizacaoRoute = TermosDeUtilizacaoRouteImport.update({
+  id: '/termos-de-utilizacao',
+  path: '/termos-de-utilizacao',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/livro-de-reclamacoes': typeof LivroDeReclamacoesRoute
+  '/politica-de-cookies': typeof PoliticaDeCookiesRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
+  '/termos-de-utilizacao': typeof TermosDeUtilizacaoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/livro-de-reclamacoes': typeof LivroDeReclamacoesRoute
+  '/politica-de-cookies': typeof PoliticaDeCookiesRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
+  '/termos-de-utilizacao': typeof TermosDeUtilizacaoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/livro-de-reclamacoes': typeof LivroDeReclamacoesRoute
+  '/politica-de-cookies': typeof PoliticaDeCookiesRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
+  '/termos-de-utilizacao': typeof TermosDeUtilizacaoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/livro-de-reclamacoes'
+    | '/politica-de-cookies'
+    | '/politica-de-privacidade'
+    | '/termos-de-utilizacao'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/livro-de-reclamacoes'
+    | '/politica-de-cookies'
+    | '/politica-de-privacidade'
+    | '/termos-de-utilizacao'
+  id:
+    | '__root__'
+    | '/'
+    | '/livro-de-reclamacoes'
+    | '/politica-de-cookies'
+    | '/politica-de-privacidade'
+    | '/termos-de-utilizacao'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LivroDeReclamacoesRoute: typeof LivroDeReclamacoesRoute
+  PoliticaDeCookiesRoute: typeof PoliticaDeCookiesRoute
+  PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
+  TermosDeUtilizacaoRoute: typeof TermosDeUtilizacaoRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +104,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/livro-de-reclamacoes': {
+      id: '/livro-de-reclamacoes'
+      path: '/livro-de-reclamacoes'
+      fullPath: '/livro-de-reclamacoes'
+      preLoaderRoute: typeof LivroDeReclamacoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politica-de-cookies': {
+      id: '/politica-de-cookies'
+      path: '/politica-de-cookies'
+      fullPath: '/politica-de-cookies'
+      preLoaderRoute: typeof PoliticaDeCookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politica-de-privacidade': {
+      id: '/politica-de-privacidade'
+      path: '/politica-de-privacidade'
+      fullPath: '/politica-de-privacidade'
+      preLoaderRoute: typeof PoliticaDePrivacidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/termos-de-utilizacao': {
+      id: '/termos-de-utilizacao'
+      path: '/termos-de-utilizacao'
+      fullPath: '/termos-de-utilizacao'
+      preLoaderRoute: typeof TermosDeUtilizacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LivroDeReclamacoesRoute: LivroDeReclamacoesRoute,
+  PoliticaDeCookiesRoute: PoliticaDeCookiesRoute,
+  PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
+  TermosDeUtilizacaoRoute: TermosDeUtilizacaoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
