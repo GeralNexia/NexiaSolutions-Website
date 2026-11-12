@@ -5,6 +5,17 @@ import { join } from "node:path";
 
 const dist = "dist";
 const routes = [
+  // Secções da página inicial (ver SECTIONS em src/lib/navigation.ts)
+  "problemas",
+  "servicos",
+  "como-trabalhamos",
+  "porque-nexia",
+  "resultados",
+  "setores",
+  "casos-de-utilizacao",
+  "faq",
+  "contacto",
+  // Páginas legais
   "politica-de-privacidade",
   "termos-de-utilizacao",
   "politica-de-cookies",

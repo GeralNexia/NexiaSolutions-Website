@@ -10,13 +10,14 @@ import { useEffect } from "react";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 import { I18nProvider, useI18n } from "@/i18n";
+import { sectionHref } from "@/lib/navigation";
 
 function NotFoundComponent() {
   const { t, lang } = useI18n();
   const logoSrc = `${import.meta.env.BASE_URL}nexia-logo.png`;
   const quickLinks = (["servicos", "processo", "faq", "contacto"] as const).map((id) => ({
     label: t.nav.links[id],
-    href: `/#${id}`,
+    href: sectionHref(id),
   }));
 
   useEffect(() => {
@@ -32,7 +33,7 @@ function NotFoundComponent() {
       <div className="gradient-hero pointer-events-none absolute inset-0" />
       <div className="grid-bg pointer-events-none absolute inset-0 opacity-60" />
       <div className="relative w-full max-w-xl text-center">
-        <Link to="/" className="inline-flex items-center gap-2.5" aria-label="Nexia Solutions — início">
+        <Link to="/{-$section}" params={{ section: undefined }} className="inline-flex items-center gap-2.5" aria-label="Nexia Solutions — início">
           <img src={logoSrc} alt="" className="h-9 w-auto rounded-lg" />
           <span className="text-lg font-semibold tracking-tight">
             Nexia <span className="font-normal text-muted-foreground">Solutions</span>
@@ -49,13 +50,13 @@ function NotFoundComponent() {
 
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <Link
-            to="/"
+            to="/{-$section}" params={{ section: undefined }}
             className="gradient-primary inline-flex h-11 items-center justify-center gap-2 rounded-lg px-6 text-sm font-medium text-primary-foreground shadow-elegant transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
           >
             {t.notFound.home}
           </Link>
           <a
-            href="/#contacto"
+            href={sectionHref("contacto")}
             className="glass-panel inline-flex h-11 items-center justify-center gap-2 rounded-lg px-6 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/50"
           >
             {t.notFound.cta}
@@ -109,7 +110,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             {t.error.retry}
           </button>
           <Link
-            to="/"
+            to="/{-$section}" params={{ section: undefined }}
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             {t.error.home}

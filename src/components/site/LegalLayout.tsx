@@ -57,7 +57,7 @@ export function LegalLayout({
 
           <article className="min-w-0">
             <Link
-              to="/"
+              to="/{-$section}" params={{ section: undefined }}
               className="flex w-fit items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-primary"
             >
               <ArrowLeft className="size-4" /> {t.legal.back}

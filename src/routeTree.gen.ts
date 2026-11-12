@@ -9,17 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
 import { Route as LivroDeReclamacoesRouteImport } from './routes/livro-de-reclamacoes'
 import { Route as PoliticaDeCookiesRouteImport } from './routes/politica-de-cookies'
 import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
 import { Route as TermosDeUtilizacaoRouteImport } from './routes/termos-de-utilizacao'
+import { Route as Char123SectionChar125RouteImport } from './routes/{-$section}'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const LivroDeReclamacoesRoute = LivroDeReclamacoesRouteImport.update({
   id: '/livro-de-reclamacoes',
   path: '/livro-de-reclamacoes',
@@ -40,70 +35,68 @@ const TermosDeUtilizacaoRoute = TermosDeUtilizacaoRouteImport.update({
   path: '/termos-de-utilizacao',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char123SectionChar125Route = Char123SectionChar125RouteImport.update({
+  id: '/{-$section}',
+  path: '/{-$section}',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/livro-de-reclamacoes': typeof LivroDeReclamacoesRoute
   '/politica-de-cookies': typeof PoliticaDeCookiesRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/termos-de-utilizacao': typeof TermosDeUtilizacaoRoute
+  '/{-$section}': typeof Char123SectionChar125Route
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/livro-de-reclamacoes': typeof LivroDeReclamacoesRoute
   '/politica-de-cookies': typeof PoliticaDeCookiesRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/termos-de-utilizacao': typeof TermosDeUtilizacaoRoute
+  '/{-$section}': typeof Char123SectionChar125Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/livro-de-reclamacoes': typeof LivroDeReclamacoesRoute
   '/politica-de-cookies': typeof PoliticaDeCookiesRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/termos-de-utilizacao': typeof TermosDeUtilizacaoRoute
+  '/{-$section}': typeof Char123SectionChar125Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/livro-de-reclamacoes'
     | '/politica-de-cookies'
     | '/politica-de-privacidade'
     | '/termos-de-utilizacao'
+    | '/{-$section}'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/livro-de-reclamacoes'
     | '/politica-de-cookies'
     | '/politica-de-privacidade'
     | '/termos-de-utilizacao'
+    | '/{-$section}'
   id:
     | '__root__'
-    | '/'
     | '/livro-de-reclamacoes'
     | '/politica-de-cookies'
     | '/politica-de-privacidade'
     | '/termos-de-utilizacao'
+    | '/{-$section}'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   LivroDeReclamacoesRoute: typeof LivroDeReclamacoesRoute
   PoliticaDeCookiesRoute: typeof PoliticaDeCookiesRoute
   PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
   TermosDeUtilizacaoRoute: typeof TermosDeUtilizacaoRoute
+  Char123SectionChar125Route: typeof Char123SectionChar125Route
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/livro-de-reclamacoes': {
       id: '/livro-de-reclamacoes'
       path: '/livro-de-reclamacoes'
@@ -132,15 +125,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermosDeUtilizacaoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/{-$section}': {
+      id: '/{-$section}'
+      path: '/{-$section}'
+      fullPath: '/{-$section}'
+      preLoaderRoute: typeof Char123SectionChar125RouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   LivroDeReclamacoesRoute: LivroDeReclamacoesRoute,
   PoliticaDeCookiesRoute: PoliticaDeCookiesRoute,
   PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
   TermosDeUtilizacaoRoute: TermosDeUtilizacaoRoute,
+  Char123SectionChar125Route: Char123SectionChar125Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

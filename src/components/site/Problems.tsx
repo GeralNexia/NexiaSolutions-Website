@@ -1,4 +1,4 @@
-import { handleSectionClick } from "@/lib/navigation";
+import { handleSectionClick, sectionHref } from "@/lib/navigation";
 import { Clock, Hand, AlertTriangle, Files, Unplug, FileSearch, ArrowRight } from "lucide-react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { useI18n } from "@/i18n";
@@ -33,8 +33,8 @@ export function Problems() {
 
         <Reveal delay={0.2} className="mt-12">
             <a
-              href="/#contacto"
-              onClick={handleSectionClick("contacto")}
+              href={sectionHref("contacto")}
+              data-section-link onClick={handleSectionClick("contacto")}
               className="gradient-primary group mx-auto flex max-w-2xl items-center justify-center gap-3 rounded-2xl px-8 py-6 text-center shadow-elegant transition-transform duration-300 hover:scale-[1.02]"
             >
               <ArrowRight className="size-5 text-primary-foreground transition-transform duration-300 group-hover:translate-x-1" />

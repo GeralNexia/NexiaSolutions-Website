@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { Problems } from "@/components/site/Problems";
@@ -12,13 +12,20 @@ import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { useEffect } from "react";
-import { scrollToHashOnLoad } from "@/lib/navigation";
+import { SECTION_SLUGS, scrollToSectionOnLoad } from "@/lib/navigation";
 import { useI18n } from "@/i18n";
 
 const description =
   "Automação de processos, Inteligência Artificial, software à medida e integração de sistemas para reduzir custos e eliminar tarefas repetitivas.";
 
-export const Route = createFileRoute("/")({
+/**
+ * Página inicial. Responde em "/" e nos endereços de cada secção
+ * (ex.: /servicos, /contacto), abrindo a página já na secção pedida.
+ */
+export const Route = createFileRoute("/{-$section}")({
+  beforeLoad: ({ params }) => {
+    if (params.section && !SECTION_SLUGS.includes(params.section)) throw notFound();
+  },
   head: () => ({
     meta: [
       { title: "Nexia Solutions | Automação de Processos e IA para Empresas" },
@@ -57,7 +64,7 @@ function Index() {
   const { t } = useI18n();
 
   useEffect(() => {
-    scrollToHashOnLoad();
+    scrollToSectionOnLoad();
   }, []);
 
   useEffect(() => {

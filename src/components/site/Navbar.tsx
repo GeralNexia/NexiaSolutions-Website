@@ -60,7 +60,7 @@ export function Navbar() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
         <a
           href={sectionHref()}
-          onClick={handleSectionClick(undefined)}
+          data-section-link onClick={handleSectionClick(undefined)}
           className="flex items-center gap-2.5 cursor-pointer"
           aria-label="Nexia Solutions"
         >
@@ -80,7 +80,7 @@ export function Navbar() {
             <a
               key={l.id}
               href={sectionHref(l.id)}
-              onClick={handleSectionClick(l.id)}
+              data-section-link onClick={handleSectionClick(l.id)}
               aria-current={activeSection === l.id ? "location" : undefined}
               className={cn(
                 "rounded-lg px-3 py-2 text-sm transition-colors hover:bg-accent/60 hover:text-foreground",
@@ -123,7 +123,7 @@ export function Navbar() {
             {dark ? <Sun /> : <Moon />}
           </Button>
           <Button variant="hero" className="hidden sm:inline-flex" asChild>
-            <a href={sectionHref("contacto")} onClick={handleSectionClick("contacto")}>
+            <a href={sectionHref("contacto")} data-section-link onClick={handleSectionClick("contacto")}>
               {t.nav.cta}
             </a>
           </Button>
@@ -150,7 +150,7 @@ export function Navbar() {
               <a
                 key={l.id}
                 href={sectionHref(l.id)}
-                onClick={handleSectionClick(l.id, () => setOpen(false))}
+                data-section-link onClick={handleSectionClick(l.id, () => setOpen(false))}
                 aria-current={activeSection === l.id ? "location" : undefined}
                 className={cn(
                   "rounded-lg px-3 py-2.5 text-sm hover:bg-accent/60 hover:text-foreground",

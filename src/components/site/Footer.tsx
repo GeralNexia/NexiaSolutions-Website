@@ -43,7 +43,7 @@ export function Footer() {
           <div>
             <a
               href={sectionHref()}
-              onClick={handleSectionClick(undefined)}
+              data-section-link onClick={handleSectionClick(undefined)}
               className="flex w-fit items-center gap-2.5 cursor-pointer"
             >
               <img
@@ -97,7 +97,7 @@ export function Footer() {
                   <li key={l.label}>
                     <a
                       href={sectionHref(l.id)}
-                      onClick={handleSectionClick(l.id)}
+                      data-section-link onClick={handleSectionClick(l.id)}
                       className="text-sm text-muted-foreground transition-colors hover:text-primary"
                     >
                       {l.label}

@@ -1,41 +1,64 @@
 import { useEffect, useState, type MouseEvent } from "react";
 
 /**
- * Navegação por secções da página inicial com links reais (ex.: /#servicos).
+ * Navegação por secções da página inicial com URLs limpos (ex.: /servicos).
  * - Clicar num link faz scroll suave e atualiza o URL (botão "voltar" funciona).
  * - Ao fazer scroll, o URL acompanha a secção visível (sem criar histórico).
- * - Fora da página inicial, o link abre a página inicial já na secção.
+ * - Abrir /servicos diretamente (ou vindo de outra página) abre o site nessa secção.
  */
 
-/** Secções da página inicial que têm link próprio, pela ordem em que aparecem. */
-export const SECTION_IDS = [
-  "problemas",
-  "servicos",
-  "processo",
-  "porque-nexia",
-  "resultados",
-  "setores",
-  "casos",
-  "faq",
-  "contacto",
+/** Secções da página inicial: id no HTML -> endereço público, pela ordem em que aparecem. */
+export const SECTIONS = [
+  { id: "problemas", slug: "problemas" },
+  { id: "servicos", slug: "servicos" },
+  { id: "processo", slug: "como-trabalhamos" },
+  { id: "porque-nexia", slug: "porque-nexia" },
+  { id: "resultados", slug: "resultados" },
+  { id: "setores", slug: "setores" },
+  { id: "casos", slug: "casos-de-utilizacao" },
+  { id: "faq", slug: "faq" },
+  { id: "contacto", slug: "contacto" },
 ] as const;
 
-const isHome = () => window.location.pathname === "/";
+export type SectionId = (typeof SECTIONS)[number]["id"];
+export const SECTION_SLUGS: string[] = SECTIONS.map((s) => s.slug);
+
+const slugToId = (slug: string) => SECTIONS.find((s) => s.slug === slug)?.id;
+const idToSlug = (id: string) => SECTIONS.find((s) => s.id === id)?.slug ?? id;
+
+/**
+ * Métodos nativos do browser. O router (TanStack) substitui window.history.pushState/
+ * replaceState para reagir a mudanças de URL e fazer scroll para o topo; dentro da
+ * página inicial o scroll é controlado aqui, por isso usamos os métodos originais.
+ */
+const nativePush = History.prototype.pushState;
+const nativeReplace = History.prototype.replaceState;
+
+/** Secção indicada no URL atual (/servicos ou, por compatibilidade, /#servicos). */
+export function currentSectionFromUrl(): string | undefined {
+  const path = window.location.pathname.replace(/^\/+|\/+$/g, "");
+  if (path) return slugToId(path);
+  const hash = decodeURIComponent(window.location.hash.slice(1));
+  return hash ? (slugToId(hash) ?? (SECTIONS.some((s) => s.id === hash) ? hash : undefined)) : undefined;
+}
+
+/** A página atual é a página inicial (/ ou /<secção>)? */
+const isHome = () => {
+  const path = window.location.pathname.replace(/^\/+|\/+$/g, "");
+  return path === "" || SECTION_SLUGS.includes(path);
+};
 
 /** URL de uma secção, mantendo parâmetros como ?lang=. */
 export function sectionHref(id?: string) {
   const search = typeof window === "undefined" ? "" : window.location.search;
-  return `/${search}${id ? `#${id}` : ""}`;
+  return `/${id ? idToSlug(id) : ""}${search}`;
 }
 
 function setUrl(id: string | undefined, mode: "push" | "replace") {
   const url = sectionHref(id);
-  if (url === window.location.pathname + window.location.search + window.location.hash) return;
-  // Mantém o estado do router (TanStack) e impede-o de fazer o seu próprio scroll
-  // para a secção — o scroll é controlado aqui (suave, ou pelo próprio utilizador).
-  const state = { ...(window.history.state ?? {}), __hashScrollIntoViewOptions: false };
-  if (mode === "push") window.history.pushState(state, "", url);
-  else window.history.replaceState(state, "", url);
+  if (url === window.location.pathname + window.location.search && !window.location.hash) return;
+  const fn = mode === "push" ? nativePush : nativeReplace;
+  fn.call(window.history, window.history.state, "", url);
 }
 
 export function goToSection(id: string) {
@@ -59,7 +82,7 @@ export function goHome() {
 }
 
 /**
- * onClick para <a href="/#id">: faz scroll suave em vez de recarregar a página,
+ * onClick para links de secção: faz scroll suave em vez de recarregar a página,
  * mas deixa o browser tratar Ctrl/Cmd+clique, clique do meio, etc. (abrir em novo separador).
  */
 export function handleSectionClick(id: string | undefined, after?: () => void) {
@@ -74,8 +97,8 @@ export function handleSectionClick(id: string | undefined, after?: () => void) {
   };
 }
 
-function scrollToHash(behavior: ScrollBehavior) {
-  const id = decodeURIComponent(window.location.hash.slice(1));
+function scrollToCurrent(behavior: ScrollBehavior) {
+  const id = currentSectionFromUrl();
   if (!id) {
     window.scrollTo({ top: 0, behavior });
     return;
@@ -83,11 +106,16 @@ function scrollToHash(behavior: ScrollBehavior) {
   document.getElementById(id)?.scrollIntoView({ behavior });
 }
 
-/** Na página inicial, faz scroll para a secção indicada no hash do URL (ex.: /#contacto). */
-export function scrollToHashOnLoad() {
-  if (!window.location.hash) return;
+/**
+ * Ao abrir a página inicial num endereço de secção (ex.: /contacto), posiciona a página
+ * nessa secção. Links antigos com # (ex.: /#contacto) são convertidos para /contacto.
+ */
+export function scrollToSectionOnLoad() {
+  const id = currentSectionFromUrl();
+  if (!id) return;
+  if (window.location.hash) setUrl(id, "replace");
   // Espera pelo render inicial antes de fazer scroll.
-  window.setTimeout(() => scrollToHash("smooth"), 120);
+  window.setTimeout(() => scrollToCurrent("smooth"), 120);
 }
 
 /**
@@ -100,35 +128,37 @@ export function useSectionLinks(enabled = true) {
   useEffect(() => {
     if (!enabled || !isHome()) return;
 
-    // Ao abrir um link direto (/#secao), esperar que o scroll inicial termine.
-    let ignoreUntil = window.location.hash ? Date.now() + 1500 : 0;
+    // Ao abrir um link direto (/servicos), esperar que o scroll inicial termine.
+    let ignoreUntil = currentSectionFromUrl() ? Date.now() + 1500 : 0;
+
     const onPop = () => {
       if (!isHome()) return;
       ignoreUntil = Date.now() + 1000;
-      scrollToHash("smooth");
-      setActive(window.location.hash.slice(1) || undefined);
+      // Depois de o router processar o evento, posicionar na secção do URL.
+      window.setTimeout(() => scrollToCurrent("smooth"), 0);
+      setActive(currentSectionFromUrl());
     };
     window.addEventListener("popstate", onPop);
 
     let frame = 0;
     const update = () => {
       frame = 0;
+      if (!isHome()) return;
       // Linha de referência a 35% da altura do ecrã.
       const line = window.innerHeight * 0.35;
       let current: string | undefined;
-      for (const id of SECTION_IDS) {
+      for (const { id } of SECTIONS) {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= line) current = id;
       }
       // No fim da página, a última secção fica ativa.
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
-        current = SECTION_IDS[SECTION_IDS.length - 1];
+        current = SECTIONS[SECTIONS.length - 1].id;
       }
       setActive(current);
       // Durante um scroll iniciado por clique, não reescrever o URL a meio do caminho.
       if (Date.now() < ignoreUntil) return;
-      const hash = window.location.hash.slice(1);
-      if (hash !== (current ?? "")) setUrl(current, "replace");
+      if (currentSectionFromUrl() !== current) setUrl(current, "replace");
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -136,7 +166,7 @@ export function useSectionLinks(enabled = true) {
 
     // Cliques em links de secção: não atualizar o URL até o scroll suave terminar.
     const onClick = (e: Event) => {
-      const a = (e.target as HTMLElement | null)?.closest?.("a[href*='#']");
+      const a = (e.target as HTMLElement | null)?.closest?.("a[data-section-link]");
       if (a) ignoreUntil = Date.now() + 1000;
     };
     document.addEventListener("click", onClick, true);
