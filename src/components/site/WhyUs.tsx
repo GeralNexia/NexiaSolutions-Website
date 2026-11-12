@@ -6,7 +6,7 @@ import { useI18n } from "@/i18n";
 export function WhyUs() {
   const { t } = useI18n();
   return (
-    <section className="bg-surface py-24 lg:py-32">
+    <section id="porque-nexia" className="bg-surface py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
           eyebrow={t.whyUs.eyebrow}

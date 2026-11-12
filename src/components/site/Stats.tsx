@@ -40,7 +40,7 @@ export function Stats() {
   const { t } = useI18n();
   const stats = values.map((v, i) => ({ ...v, label: t.stats.labels[i] }));
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32">
+    <section id="resultados" className="relative overflow-hidden py-24 lg:py-32">
       <div className="gradient-hero pointer-events-none absolute inset-0" />
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading eyebrow={t.stats.eyebrow} title={t.stats.title} />

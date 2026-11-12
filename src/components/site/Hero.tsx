@@ -1,3 +1,4 @@
+import { handleSectionClick } from "@/lib/navigation";
 import { motion } from "motion/react";
 import { ArrowRight, FileText, Sparkles, Database, BarChart3, Workflow, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -53,7 +54,8 @@ export function Hero() {
             className="mt-9 flex flex-wrap gap-3"
           >
             <Button variant="hero" size="xl" asChild>
-              <a href="#contacto">
+              <a href="/#contacto"
+              onClick={handleSectionClick("contacto")}>
                 {t.hero.cta} <ArrowRight />
               </a>
             </Button>

@@ -8,7 +8,7 @@ export function UseCases() {
   const { t } = useI18n();
   const cases = t.useCases.items.map((c, i) => ({ ...c, icon: icons[i] }));
   return (
-    <section className="py-24 lg:py-32">
+    <section id="casos" className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
           eyebrow={t.useCases.eyebrow}

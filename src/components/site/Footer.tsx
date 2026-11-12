@@ -2,11 +2,11 @@ import { useI18n } from "@/i18n";
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, MessageCircle, Mail, Phone } from "lucide-react";
 import { legalPages, LIVRO_RECLAMACOES_URL } from "@/lib/company";
-import { goHome, goToSection } from "@/lib/navigation";
+import { handleSectionClick, sectionHref } from "@/lib/navigation";
 
 const groupIds = [
   ["servicos", "servicos", "servicos", "servicos", "servicos"],
-  ["processo", "setores", "servicos", "faq"],
+  ["processo", "setores", "casos", "faq"],
 ];
 
 const socials = [
@@ -35,16 +35,16 @@ export function Footer() {
   ];
   const logoSrc = `${import.meta.env.BASE_URL}nexia-logo.png`;
 
-  const scrollToSection = goToSection;
 
   return (
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div>
-            <div 
-              onClick={goHome}
-              className="flex items-center gap-2.5 cursor-pointer"
+            <a
+              href={sectionHref()}
+              onClick={handleSectionClick(undefined)}
+              className="flex w-fit items-center gap-2.5 cursor-pointer"
             >
               <img
                 src={logoSrc}
@@ -53,7 +53,7 @@ export function Footer() {
                 loading="lazy"
               />
               <span className="text-[17px] font-semibold tracking-tight">Nexia Solutions</span>
-            </div>
+            </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               {t.footer.tagline}
             </p>
@@ -95,12 +95,13 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 {g.links.map((l) => (
                   <li key={l.label}>
-                    <button
-                      onClick={() => scrollToSection(l.id)}
-                      className="text-left text-sm text-muted-foreground transition-colors hover:text-primary cursor-pointer bg-transparent border-none p-0"
+                    <a
+                      href={sectionHref(l.id)}
+                      onClick={handleSectionClick(l.id)}
+                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
                     >
                       {l.label}
-                    </button>
+                    </a>
                   </li>
                 ))}
               </ul>

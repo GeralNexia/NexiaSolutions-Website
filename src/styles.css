@@ -290,3 +290,8 @@
     font-weight: 600;
   }
 }
+
+/* Compensa a navbar fixa ao saltar para uma secção (ex.: /#servicos) */
+section[id] {
+  scroll-margin-top: 4rem;
+}
