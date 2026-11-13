@@ -12,7 +12,7 @@ export const company = {
   /** Número de Identificação Fiscal (NIF/NIPC). */
   nif: "246865113",
   /** Morada da sede / domicílio profissional. */
-  address: "Rua de Angola, n.º 87, 2.º Dto., Feitosa, Ponte de Lima, Portugal",
+  address: "Rua de Angola, n.º 87, 4990-344 Ponte de Lima, Portugal",
   email: "geralnexia@gmail.com",
   phone: "+351 924 890 248",
   phoneHref: "tel:+351924890248",

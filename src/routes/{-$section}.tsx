@@ -52,7 +52,8 @@ export const Route = createFileRoute("/{-$section}")({
           areaServed: "PT",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "Rua de Angola, n.º 87, 2.º Dto., Feitosa",
+            streetAddress: "Rua de Angola, n.º 87",
+            postalCode: "4990-344",
             addressLocality: "Ponte de Lima",
             addressRegion: "Viana do Castelo",
             addressCountry: "PT",
