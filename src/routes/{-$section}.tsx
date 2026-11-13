@@ -11,6 +11,7 @@ import { UseCases } from "@/components/site/UseCases";
 import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
+import { SiteIntro } from "@/components/site/SiteIntro";
 import { useEffect } from "react";
 import { SECTION_SLUGS, scrollToSectionOnLoad } from "@/lib/navigation";
 import { useI18n } from "@/i18n";
@@ -76,6 +77,7 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SiteIntro />
       <Navbar />
       <main>
         <Hero />

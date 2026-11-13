@@ -11,6 +11,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 import { I18nProvider, useI18n } from "@/i18n";
 import { sectionHref } from "@/lib/navigation";
+import { CookieBanner } from "@/components/site/CookieBanner";
 
 function NotFoundComponent() {
   const { t, lang } = useI18n();
@@ -134,6 +135,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
         <Outlet />
+        <CookieBanner />
         <Toaster position="top-center" richColors />
       </I18nProvider>
     </QueryClientProvider>

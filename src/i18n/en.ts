@@ -27,6 +27,8 @@ export const en: Dictionary = {
       "We build smart solutions with Artificial Intelligence, automation and custom software to reduce costs, eliminate repetitive tasks and boost productivity.",
     cta: "Get a Free Assessment",
     checks: ["No more repetitive tasks", "Integrates with your ERP", "Your data secure everywhere"],
+    areasLabel: "Specialists in",
+    areas: ["Process automation", "Financial processes", "Smart logistics", "Artificial Intelligence", "Benchmark websites"],
     pipelineTitle: "Nexia Solutions · Automation Pipeline",
     steps: [
       { label: "PDF", detail: "Document received" },
@@ -241,6 +243,20 @@ export const en: Dictionary = {
     otherDocs: "Other legal documents",
     ptOnlyNotice:
       "This document is provided in Portuguese, which is the legally binding version under Portuguese law. If you have any questions, please contact us and we will be happy to help.",
+  },
+  intro: {
+    boot: "Connecting systems",
+    tagline: "Technology that transforms operations",
+    lines: ["Process automation", "Frictionless finance", "Smart logistics", "Benchmark websites"],
+    skip: "Skip intro",
+    ready: "Ready",
+  },
+  cookieBanner: {
+    label: "Cookie notice",
+    text: "Our website uses cookies to ensure we give you the best browsing experience. If you continue, we will assume that you agree with our cookie policy.",
+    accept: "Accept",
+    more: "Learn more",
+    close: "Close cookie notice",
   },
   notFound: {
     pageTitle: "Page not found",

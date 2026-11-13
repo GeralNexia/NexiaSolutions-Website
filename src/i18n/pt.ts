@@ -25,6 +25,8 @@ export const pt = {
       "Desenvolvemos soluções inteligentes com Inteligência Artificial, automação e software personalizado para reduzir custos, eliminar tarefas repetitivas e aumentar a produtividade.",
     cta: "Pedir Diagnóstico Gratuito",
     checks: ["Sem tarefas repetitivas", "Integra com o seu ERP", "Dados seguros em todo o lugar"],
+    areasLabel: "Especialistas em",
+    areas: ["Automação de processos", "Processos financeiros", "Logística inteligente", "Inteligência Artificial", "Websites de referência"],
     pipelineTitle: "Nexia Solutions · Pipeline de Automação",
     steps: [
       { label: "PDF", detail: "Documento recebido" },
@@ -242,6 +244,20 @@ export const pt = {
     lastUpdated: "Última atualização",
     otherDocs: "Outros documentos legais",
     ptOnlyNotice: "",
+  },
+  intro: {
+    boot: "A ligar sistemas",
+    tagline: "Tecnologia que transforma operações",
+    lines: ["Automação de processos", "Finanças sem fricção", "Logística inteligente", "Websites de referência"],
+    skip: "Saltar intro",
+    ready: "Pronto",
+  },
+  cookieBanner: {
+    label: "Aviso de cookies",
+    text: "O nosso website utiliza cookies para garantir que lhe proporcionamos a melhor experiência de navegação. Se quiser continuar, partimos do princípio em que está de acordo com a nossa política de cookies.",
+    accept: "Aceitar",
+    more: "Saber mais",
+    close: "Fechar aviso de cookies",
   },
   notFound: {
     pageTitle: "Página não encontrada",
