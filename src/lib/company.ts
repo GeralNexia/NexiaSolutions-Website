@@ -8,7 +8,7 @@
 export const company = {
   brand: "Nexia Solutions",
   /** Denominação social ou nome do empresário em nome individual. */
-  legalName: "",
+  legalName: "Bruno Miguel Rodrigues Cerqueira",
   /** Número de Identificação Fiscal (NIF/NIPC). */
   nif: "246865113",
   /** Morada da sede / domicílio profissional. */
