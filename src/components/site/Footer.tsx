@@ -1,7 +1,7 @@
 import { useI18n } from "@/i18n";
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, MessageCircle, Mail, Phone } from "lucide-react";
-import { legalPages, LIVRO_RECLAMACOES_URL } from "@/lib/company";
+import { company, legalPages, LIVRO_RECLAMACOES_URL } from "@/lib/company";
 import { handleSectionClick, sectionHref } from "@/lib/navigation";
 
 const groupIds = [
@@ -136,6 +136,12 @@ export function Footer() {
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Nexia Solutions. {t.footer.rights}
+            {company.nif && (
+              <>
+                {" "}
+                · {t.footer.nif} {company.nif}
+              </>
+            )}
           </p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <Link to="/politica-de-privacidade" className="text-xs text-muted-foreground hover:text-primary">

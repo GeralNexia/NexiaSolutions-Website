@@ -110,28 +110,29 @@ export function LegalLayout({
 
 /** Bloco de identificação do responsável, reutilizado nos documentos. */
 export function CompanyIdentification() {
+  const { t } = useI18n();
+  const l = t.legal.identification;
   return (
     <ul>
       <li>
-        <strong>Entidade:</strong> {company.legalName || company.brand}
+        <strong>{l.entity}:</strong> {company.legalName || company.brand}
         {company.legalName && company.legalName !== company.brand ? ` (${company.brand})` : ""}
       </li>
       {company.nif && (
         <li>
-          <strong>NIF:</strong> {company.nif}
+          <strong>{l.nif}:</strong> {company.nif}
         </li>
       )}
       {company.address && (
         <li>
-          <strong>Morada:</strong> {company.address}
+          <strong>{l.address}:</strong> {company.address}
         </li>
       )}
       <li>
-        <strong>Email:</strong> <a href={`mailto:${company.email}`}>{company.email}</a>
+        <strong>{l.email}:</strong> <a href={`mailto:${company.email}`}>{company.email}</a>
       </li>
       <li>
-        <strong>Telefone:</strong> <a href={company.phoneHref}>{company.phone}</a> (chamada para
-        rede móvel nacional)
+        <strong>{l.phone}:</strong> <a href={company.phoneHref}>{company.phone}</a> {l.phoneNote}
       </li>
     </ul>
   );

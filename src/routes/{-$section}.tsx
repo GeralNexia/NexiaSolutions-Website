@@ -50,6 +50,13 @@ export const Route = createFileRoute("/{-$section}")({
           email: "geralnexia@gmail.com",
           telephone: "+351924890248",
           areaServed: "PT",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Rua de Angola, n.º 87, 2.º Dto., Feitosa",
+            addressLocality: "Ponte de Lima",
+            addressRegion: "Viana do Castelo",
+            addressCountry: "PT",
+          },
           sameAs: [
             "https://www.facebook.com/profile.php?id=61593294254599",
             "https://www.instagram.com/nexia__solutions",

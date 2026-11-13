@@ -209,8 +209,8 @@ export const pt = {
     privacyLink: "Política de Privacidade",
     successTitle: "Pedido enviado com sucesso!",
     successDesc: "A nossa equipa entra em contacto consigo em menos de 24 horas.",
-    errorTitle: "Erro ao enviar",
-    errorDesc: "Ocorreu um erro ao processar o formulário.",
+    errorTitle: "O pedido não foi submetido",
+    errorDesc: "Devido a uma falha, o seu pedido não foi submetido. Os dados que preencheu continuam no formulário: tente novamente ou contacte-nos para geralnexia@gmail.com.",
   },
   footer: {
     tagline:
@@ -227,6 +227,7 @@ export const pt = {
     company: ["Como Trabalhamos", "Setores", "Casos de Utilização", "FAQ"],
     legalTitle: "Legal",
     complaintsBook: "Livro de Reclamações Eletrónico",
+    nif: "NIF",
     rights: "Todos os direitos reservados.",
     privacy: "Privacidade",
     terms: "Termos",
@@ -243,6 +244,14 @@ export const pt = {
     back: "Voltar ao início",
     lastUpdated: "Última atualização",
     otherDocs: "Outros documentos legais",
+    identification: {
+      entity: "Entidade",
+      nif: "NIF",
+      address: "Morada",
+      email: "Email",
+      phone: "Telefone",
+      phoneNote: "(chamada para rede móvel nacional)",
+    },
     ptOnlyNotice: "",
   },
   intro: {

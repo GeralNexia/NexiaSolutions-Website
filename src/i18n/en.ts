@@ -207,8 +207,8 @@ export const en: Dictionary = {
     privacyLink: "Privacy Policy",
     successTitle: "Request sent successfully!",
     successDesc: "Our team will get back to you within 24 hours.",
-    errorTitle: "Sending failed",
-    errorDesc: "An error occurred while processing the form.",
+    errorTitle: "Your request was not submitted",
+    errorDesc: "Due to a failure, your request was not submitted. The details you entered are still in the form: please try again or contact us at geralnexia@gmail.com.",
   },
   footer: {
     tagline:
@@ -225,6 +225,7 @@ export const en: Dictionary = {
     company: ["How We Work", "Industries", "Use Cases", "FAQ"],
     legalTitle: "Legal",
     complaintsBook: "Electronic Complaints Book",
+    nif: "Tax ID (NIF)",
     rights: "All rights reserved.",
     privacy: "Privacy",
     terms: "Terms",
@@ -241,8 +242,15 @@ export const en: Dictionary = {
     back: "Back to home",
     lastUpdated: "Last updated",
     otherDocs: "Other legal documents",
-    ptOnlyNotice:
-      "This document is provided in Portuguese, which is the legally binding version under Portuguese law. If you have any questions, please contact us and we will be happy to help.",
+    identification: {
+      entity: "Entity",
+      nif: "Tax ID (NIF)",
+      address: "Address",
+      email: "Email",
+      phone: "Phone",
+      phoneNote: "(call to a Portuguese mobile network)",
+    },
+    ptOnlyNotice: "This is a translation provided for your convenience. In the event of any discrepancy, the Portuguese version prevails.",
   },
   intro: {
     boot: "Connecting systems",

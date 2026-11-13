@@ -212,8 +212,8 @@ export const fr: Dictionary = {
     privacyLink: "Politique de confidentialité",
     successTitle: "Demande envoyée avec succès !",
     successDesc: "Notre équipe vous recontactera dans les 24 heures.",
-    errorTitle: "Erreur d'envoi",
-    errorDesc: "Une erreur s'est produite lors du traitement du formulaire.",
+    errorTitle: "Votre demande n'a pas été envoyée",
+    errorDesc: "En raison d'une défaillance, votre demande n'a pas été envoyée. Les informations saisies sont toujours dans le formulaire : veuillez réessayer ou nous contacter à geralnexia@gmail.com.",
   },
   footer: {
     tagline:
@@ -230,6 +230,7 @@ export const fr: Dictionary = {
     company: ["Notre méthode", "Secteurs", "Cas d'usage", "FAQ"],
     legalTitle: "Mentions légales",
     complaintsBook: "Livre de réclamations électronique",
+    nif: "NIF",
     rights: "Tous droits réservés.",
     privacy: "Confidentialité",
     terms: "Conditions",
@@ -246,8 +247,15 @@ export const fr: Dictionary = {
     back: "Retour à l'accueil",
     lastUpdated: "Dernière mise à jour",
     otherDocs: "Autres documents légaux",
-    ptOnlyNotice:
-      "Ce document est disponible en portugais, qui en est la version juridiquement contraignante selon le droit portugais. Pour toute question, n'hésitez pas à nous contacter.",
+    identification: {
+      entity: "Entité",
+      nif: "NIF (numéro fiscal)",
+      address: "Adresse",
+      email: "E-mail",
+      phone: "Téléphone",
+      phoneNote: "(appel vers un réseau mobile portugais)",
+    },
+    ptOnlyNotice: "Ceci est une traduction fournie à titre informatif. En cas de divergence, la version portugaise prévaut.",
   },
   intro: {
     boot: "Connexion des systèmes",

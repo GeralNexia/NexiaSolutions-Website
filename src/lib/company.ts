@@ -10,16 +10,16 @@ export const company = {
   /** Denominação social ou nome do empresário em nome individual. */
   legalName: "",
   /** Número de Identificação Fiscal (NIF/NIPC). */
-  nif: "",
+  nif: "246865113",
   /** Morada da sede / domicílio profissional. */
-  address: "",
+  address: "Rua de Angola, n.º 87, 2.º Dto., Feitosa, Ponte de Lima, Portugal",
   email: "geralnexia@gmail.com",
   phone: "+351 924 890 248",
   phoneHref: "tel:+351924890248",
   website: "https://www.nexiasolutions.pt",
   country: "Portugal",
   /** Data da última atualização dos documentos legais (AAAA-MM-DD). */
-  legalLastUpdated: "2026-11-12",
+  legalLastUpdated: "2026-11-13",
 } as const;
 
 export const legalPages = [

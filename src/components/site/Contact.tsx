@@ -32,13 +32,14 @@ export function Contact() {
 
       if (data.success) {
         toast.success(c.successTitle, { description: c.successDesc });
-        formElement.reset(); // Limpa todos os campos do formulário aqui
+        formElement.reset();
       } else {
-        toast.error(c.errorTitle, { description: data.message || c.errorDesc });
+        // Mantém os dados no formulário para a pessoa poder tentar de novo.
+        toast.error(c.errorTitle, { description: c.errorDesc, duration: 10000 });
       }
-    } catch (error) {
-      toast.success(c.successTitle, { description: c.successDesc });
-      formElement.reset(); // Limpa também no caso de exceção de rede/CORS
+    } catch {
+      // Falha de rede/ligação: o pedido NÃO chegou. Avisar e manter os dados.
+      toast.error(c.errorTitle, { description: c.errorDesc, duration: 10000 });
     } finally {
       setIsSubmitting(false);
     }
