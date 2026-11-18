@@ -11,6 +11,8 @@ import { useEffect, useState, type MouseEvent } from "react";
 export const SECTIONS = [
   { id: "problemas", slug: "problemas" },
   { id: "servicos", slug: "servicos" },
+  { id: "antes-depois", slug: "antes-e-depois" },
+  { id: "calculadora", slug: "calculadora" },
   { id: "processo", slug: "como-trabalhamos" },
   { id: "porque-nexia", slug: "porque-nexia" },
   { id: "resultados", slug: "resultados" },

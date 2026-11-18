@@ -3,6 +3,8 @@ import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { Problems } from "@/components/site/Problems";
 import { Services } from "@/components/site/Services";
+import { BeforeAfter } from "@/components/site/BeforeAfter";
+import { SavingsCalculator } from "@/components/site/SavingsCalculator";
 import { Process } from "@/components/site/Process";
 import { WhyUs } from "@/components/site/WhyUs";
 import { Stats } from "@/components/site/Stats";
@@ -17,7 +19,7 @@ import { SECTION_SLUGS, scrollToSectionOnLoad } from "@/lib/navigation";
 import { useI18n } from "@/i18n";
 
 const description =
-  "Automação de processos, Inteligência Artificial, software à medida e integração de sistemas para reduzir custos e eliminar tarefas repetitivas.";
+  "Consultoria e melhoria de processos, automação com Inteligência Artificial e websites de excelência para empresas que querem trabalhar melhor e crescer.";
 
 /**
  * Página inicial. Responde em "/" e nos endereços de cada secção
@@ -29,11 +31,11 @@ export const Route = createFileRoute("/{-$section}")({
   },
   head: () => ({
     meta: [
-      { title: "Nexia Solutions | Automação de Processos e IA para Empresas" },
+      { title: "Nexia Solutions | Consultoria, Automação de Processos e Websites" },
       { name: "description", content: description },
       {
         property: "og:title",
-        content: "Nexia Solutions | Automação de Processos e IA para Empresas",
+        content: "Nexia Solutions | Consultoria, Automação de Processos e Websites",
       },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
@@ -91,6 +93,8 @@ function Index() {
         <Hero />
         <Problems />
         <Services />
+        <BeforeAfter />
+        <SavingsCalculator />
         <Process />
 
         <WhyUs />

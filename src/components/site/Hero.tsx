@@ -9,6 +9,11 @@ import {
   BarChart3,
   Workflow,
   CheckCircle2,
+  Calculator,
+  Compass,
+  Bot,
+  MonitorSmartphone,
+  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/i18n";
@@ -16,6 +21,7 @@ import { NetworkCanvas } from "@/components/site/NetworkCanvas";
 import { useIntroPending } from "@/lib/intro";
 
 const stepIcons = [FileText, Sparkles, Database, BarChart3, Workflow, CheckCircle2];
+const pillarIcons = [Compass, Bot, MonitorSmartphone];
 
 export function Hero() {
   const { t } = useI18n();
@@ -37,7 +43,7 @@ export function Hero() {
       ref={sectionRef}
       id="top"
       onPointerMove={onPointerMove}
-      className="relative overflow-hidden pt-32 pb-20 lg:pt-44 lg:pb-28"
+      className="relative overflow-hidden pt-32 pb-20 lg:pt-36 lg:pb-28"
     >
       <div className="gradient-hero pointer-events-none absolute inset-0" />
       <div className="grid-bg pointer-events-none absolute inset-0 opacity-60" />
@@ -103,7 +109,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 22 }}
             animate={go({ opacity: 1, y: 0 })}
             transition={{ duration: 0.75, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-9 flex flex-wrap gap-3"
+            className="mt-9 flex flex-wrap items-center gap-2"
           >
             <Button variant="hero" size="xl" asChild>
               <a
@@ -114,25 +120,72 @@ export function Hero() {
                 {t.hero.cta} <ArrowRight />
               </a>
             </Button>
+            <Button variant="ghost" size="lg" className="h-13 px-4 text-base" asChild>
+              <a
+                href={sectionHref("calculadora")}
+                data-section-link
+                onClick={handleSectionClick("calculadora")}
+              >
+                <Calculator /> {t.hero.ctaSecondary}
+              </a>
+            </Button>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={go({ opacity: 1 })}
-            transition={{ duration: 0.8, delay: 0.55 }}
-            className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted-foreground"
-          >
-            {t.hero.checks.map((t) => (
-              <span key={t} className="inline-flex items-center gap-2">
-                <CheckCircle2 className="size-4 text-primary" /> {t}
-              </span>
-            ))}
-          </motion.div>
+          <HeroPillars ready={ready} />
         </div>
 
         <HeroPipeline ready={ready} />
       </div>
     </section>
+  );
+}
+
+/** Os três pilares da Nexia, ligados como um percurso: consultoria → automação → websites. */
+function HeroPillars({ ready }: { ready: boolean }) {
+  const { t } = useI18n();
+  return (
+    <ol className="mt-10 grid gap-3 sm:grid-cols-3 sm:gap-2">
+      {t.hero.pillars.map((p, i) => {
+        const Icon = pillarIcons[i];
+        return (
+          <motion.li
+            key={p.label}
+            initial={{ opacity: 0, y: 12 }}
+            animate={ready ? { opacity: 1, y: 0 } : undefined}
+            transition={{ duration: 0.6, delay: 0.5 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
+          >
+            <div
+              className={
+                "flex h-full items-start gap-3 rounded-2xl border bg-card/70 p-3 backdrop-blur-sm sm:flex-col sm:gap-2 " +
+                (i === 1 ? "border-primary/40 shadow-elegant" : "border-border")
+              }
+            >
+              <span
+                className={
+                  "flex size-8 shrink-0 items-center justify-center rounded-lg " +
+                  (i === 1
+                    ? "gradient-primary text-primary-foreground"
+                    : "bg-accent text-accent-foreground")
+                }
+              >
+                <Icon className="size-4" />
+              </span>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold">{p.label}</p>
+                <p className="text-xs leading-snug text-muted-foreground">{p.detail}</p>
+              </div>
+            </div>
+            {i < 2 && (
+              <ChevronRight
+                aria-hidden
+                className="absolute top-1/2 -right-2.5 z-10 hidden size-4 -translate-y-1/2 rounded-full bg-background text-primary sm:block"
+              />
+            )}
+          </motion.li>
+        );
+      })}
+    </ol>
   );
 }
 

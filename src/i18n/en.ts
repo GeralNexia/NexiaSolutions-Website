@@ -2,15 +2,16 @@ import type { Dictionary } from "./pt";
 
 export const en: Dictionary = {
   meta: {
-    title: "Nexia Solutions | Process Automation and AI for Businesses",
+    title: "Nexia Solutions | Consulting, Process Automation and Websites",
     description:
-      "Process automation, Artificial Intelligence, custom software and systems integration to cut costs and eliminate repetitive tasks.",
+      "Process consulting and improvement, AI-powered automation and outstanding websites for businesses that want to work better and grow.",
   },
   nav: {
     links: {
       servicos: "Services",
       processo: "How We Work",
       setores: "Industries",
+      calculadora: "Calculator",
       faq: "FAQ",
       contacto: "Contact",
     },
@@ -24,9 +25,23 @@ export const en: Dictionary = {
     title1: "We automate processes.",
     title2: "We empower businesses.",
     subtitle:
-      "We build smart solutions with Artificial Intelligence, automation and custom software to reduce costs, eliminate repetitive tasks and boost productivity.",
+      "We analyse how your business works, automate what is repetitive and build websites worthy of your brand. Less time wasted, more results.",
     cta: "Get a Free Assessment",
-    checks: ["No more repetitive tasks", "Integrates with your ERP", "Your data secure everywhere"],
+    ctaSecondary: "Calculate my savings",
+    pillars: [
+      {
+        label: "Consulting",
+        detail: "We analyse and improve processes",
+      },
+      {
+        label: "Automation & AI",
+        detail: "We eliminate repetitive tasks",
+      },
+      {
+        label: "Websites",
+        detail: "Sites that convert visitors",
+      },
+    ],
     areasLabel: "Specialists in",
     areas: ["Process automation", "Financial processes", "Smart logistics", "Artificial Intelligence", "Benchmark websites"],
     pipelineTitle: "Nexia Solutions · Automation Pipeline",
@@ -55,35 +70,98 @@ export const en: Dictionary = {
   },
   services: {
     eyebrow: "Services",
-    title: "Technology that works for you",
-    description: "From assessment to implementation, we deliver complete, ready-to-use solutions.",
-    items: [
-      {
-        title: "Business Automation",
-        text: "We automate repetitive tasks and free your teams to focus on what matters.",
-        items: ["Automated workflows", "Emails and alerts", "Recurring reports"],
-      },
-      {
-        title: "Artificial Intelligence",
-        text: "We create AI solutions tailored to your business and your data.",
-        items: ["Automatic classification", "Internal assistants", "Predictive analytics"],
-      },
-      {
-        title: "Software Development",
-        text: "Custom software, built to scale with your company.",
-        items: ["Web applications", "ERPs and CRMs", "Portals and internal tools"],
-      },
-      {
-        title: "Systems Integration",
-        text: "We connect everything you already use, without replacing what works.",
-        items: ["ERP · CRM", "Excel · Outlook", "Google Workspace · APIs"],
-      },
-      {
-        title: "Intelligent Document Processing",
-        text: "Automatic AI-powered document reading, with optional human validation.",
-        items: ["PDFs, contracts and invoices", "Reports and deeds", "Legal documentation"],
-      },
+    title: "Three fronts, one goal: a business that runs better",
+    description: "We start by understanding your business, automate what makes sense and give you a digital presence that matches it.",
+    focus: "Our focus",
+    consulting: {
+      tag: "01 · Consulting",
+      title: "Process consulting and improvement",
+      text: "Before touching technology, we look at how your team works. We map, measure and propose concrete improvements.",
+      items: [
+        "Process mapping",
+        "Waste identification",
+        "Prioritised improvement plan",
+        "Performance indicators",
+      ],
+    },
+    automation: {
+      tag: "02 · Automation & AI",
+      ai: "AI",
+      title: "Process automation with Artificial Intelligence",
+      text: "We connect systems, read documents and trigger automatic workflows, so your team can focus on what really creates value.",
+      capabilities: [
+        {
+          title: "Automated workflows",
+          text: "Emails, alerts, approvals and reports with no manual work.",
+        },
+        {
+          title: "AI applied to your business",
+          text: "Classification, internal assistants and predictive analysis.",
+        },
+        {
+          title: "Intelligent document reading",
+          text: "Invoices, contracts and PDFs turned into data.",
+        },
+        {
+          title: "Systems integration",
+          text: "ERP, CRM, Excel, Outlook and APIs talking to each other.",
+        },
+      ],
+    },
+    web: {
+      tag: "03 · Websites & Software",
+      title: "Outstanding websites and custom software",
+      text: "Fast, beautiful sites built to convert, connected to your automations so every lead goes straight into your process.",
+      items: [
+        "Custom design",
+        "Optimised for Google and mobile",
+        "Multilingual",
+        "Portals and web apps",
+      ],
+      browser: "your-business.com",
+    },
+  },
+  beforeAfter: {
+    eyebrow: "Before and after",
+    title: "The same process. A fraction of the time.",
+    description: "See what happens to a supplier invoice arriving by email, today and with a Nexia automation.",
+    manualLabel: "Today (manual)",
+    autoLabel: "With Nexia",
+    manualSteps: [
+      "Open the email and download the PDF",
+      "Read the invoice line by line",
+      "Copy the data into Excel",
+      "Enter everything into the ERP",
+      "File it in the right folder",
+      "Email the accounting team",
     ],
+    autoSteps: [
+      "The invoice arrives by email",
+      "AI reads, validates and posts it to the ERP",
+      "Filing and notification done automatically",
+      "Your team only reviews exceptions",
+    ],
+    metricLabels: ["Time per invoice", "Errors", "Volume"],
+    manualMetrics: ["~15 minutes", "Typing mistakes", "More invoices, more people"],
+    autoMetrics: ["Seconds", "Automatic validation", "Scales without hiring"],
+    note: "Illustrative example based on a typical process. Actual figures depend on each business.",
+  },
+  calculator: {
+    eyebrow: "Savings calculator",
+    title: "How much is repetitive work costing you?",
+    description: "Adjust the values and get a quick estimate of what automation could give back to your business.",
+    people: "People involved",
+    hours: "Hours per week on repetitive tasks (per person)",
+    cost: "Hourly cost per person",
+    hoursUnit: "h",
+    perYear: "per year",
+    savedMoney: "Estimated savings",
+    savedHours: "Hours recovered",
+    savedDays: "Working days freed up",
+    assumption: "Estimate assuming 60% of repetitive work can be automated, over 46 working weeks per year.",
+    cta: "I want these savings: get an assessment",
+    prefillProblem: "Automate repetitive tasks",
+    prefill: "Calculator estimate: {people} person(s) × {hours} h/week on repetitive tasks, at €{cost}/hour. Estimated savings: {money} per year ({savedHours} hours).",
   },
   process: {
     eyebrow: "How We Work",
@@ -215,11 +293,11 @@ export const en: Dictionary = {
       "We transform businesses through technology: automation, Artificial Intelligence and custom-built software.",
     servicesTitle: "Services",
     services: [
+      "Process Consulting",
       "Business Automation",
       "Artificial Intelligence",
-      "Custom Software",
       "Systems Integration",
-      "Document Processing",
+      "Websites and Software",
     ],
     companyTitle: "Company",
     company: ["How We Work", "Industries", "Use Cases", "FAQ"],

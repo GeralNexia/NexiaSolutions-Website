@@ -1,5 +1,6 @@
 import { useI18n } from "@/i18n";
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { onContactPrefill } from "@/lib/contact-prefill";
 import { Mail, Phone, Send, MapPin } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,24 @@ export function Contact() {
   const { t } = useI18n();
   const c = t.contact;
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Preenchimento vindo de outras secções (ex.: calculadora de poupança).
+  useEffect(
+    () =>
+      onContactPrefill((data) => {
+        const form = formRef.current;
+        if (!form) return;
+        for (const [name, value] of Object.entries(data)) {
+          const field = form.elements.namedItem(name);
+          if (value && (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement)) {
+            field.value = value;
+          }
+        }
+        window.setTimeout(() => form.querySelector<HTMLInputElement>("#nome")?.focus({ preventScroll: true }), 700);
+      }),
+    [],
+  );
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -93,6 +112,7 @@ export function Contact() {
 
           <Reveal delay={0.1}>
             <form
+              ref={formRef}
               onSubmit={onSubmit}
               className="rounded-3xl border border-border bg-card p-8 shadow-elegant"
             >

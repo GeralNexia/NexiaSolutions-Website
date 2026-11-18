@@ -1,14 +1,15 @@
 export const pt = {
   meta: {
-    title: "Nexia Solutions | Automação de Processos e IA para Empresas",
+    title: "Nexia Solutions | Consultoria, Automação de Processos e Websites",
     description:
-      "Automação de processos, Inteligência Artificial, software à medida e integração de sistemas para reduzir custos e eliminar tarefas repetitivas.",
+      "Consultoria e melhoria de processos, automação com Inteligência Artificial e websites de excelência para empresas que querem trabalhar melhor e crescer.",
   },
   nav: {
     links: {
       servicos: "Serviços",
       processo: "Como Trabalhamos",
       setores: "Setores",
+      calculadora: "Calculadora",
       faq: "FAQ",
       contacto: "Contacto",
     },
@@ -22,9 +23,23 @@ export const pt = {
     title1: "Automatizamos processos.",
     title2: "Potenciamos empresas.",
     subtitle:
-      "Desenvolvemos soluções inteligentes com Inteligência Artificial, automação e software personalizado para reduzir custos, eliminar tarefas repetitivas e aumentar a produtividade.",
+      "Analisamos como a sua empresa trabalha, automatizamos o que é repetitivo e criamos websites à altura do seu negócio. Menos tempo perdido, mais resultados.",
     cta: "Pedir Diagnóstico Gratuito",
-    checks: ["Sem tarefas repetitivas", "Integra com o seu ERP", "Dados seguros em todo o lugar"],
+    ctaSecondary: "Calcular a minha poupança",
+    pillars: [
+      {
+        label: "Consultoria",
+        detail: "Analisamos e melhoramos processos",
+      },
+      {
+        label: "Automação & IA",
+        detail: "Eliminamos tarefas repetitivas",
+      },
+      {
+        label: "Websites",
+        detail: "Sites que convertem visitantes",
+      },
+    ],
     areasLabel: "Especialistas em",
     areas: ["Automação de processos", "Processos financeiros", "Logística inteligente", "Inteligência Artificial", "Websites de referência"],
     pipelineTitle: "Nexia Solutions · Pipeline de Automação",
@@ -54,36 +69,98 @@ export const pt = {
   },
   services: {
     eyebrow: "Serviços",
-    title: "Tecnologia que trabalha por si",
-    description:
-      "Do diagnóstico à implementação, entregamos soluções completas e prontas a usar.",
-    items: [
-      {
-        title: "Automação Empresarial",
-        text: "Automatizamos tarefas repetitivas e libertamos as suas equipas para o que importa.",
-        items: ["Workflows automáticos", "Emails e alertas", "Relatórios recorrentes"],
-      },
-      {
-        title: "Inteligência Artificial",
-        text: "Criamos soluções de IA adaptadas ao seu negócio e aos seus dados.",
-        items: ["Classificação automática", "Assistentes internos", "Análise preditiva"],
-      },
-      {
-        title: "Desenvolvimento de Software",
-        text: "Software à medida, construído para escalar com a sua empresa.",
-        items: ["Aplicações Web", "ERPs e CRMs", "Portais e ferramentas internas"],
-      },
-      {
-        title: "Integração de Sistemas",
-        text: "Ligamos tudo o que já usa, sem substituir o que funciona.",
-        items: ["ERP · CRM", "Excel · Outlook", "Google Workspace · APIs"],
-      },
-      {
-        title: "Processamento Inteligente de Documentos",
-        text: "Leitura automática de documentos com IA, com validação humana opcional.",
-        items: ["PDFs, contratos e faturas", "Relatórios e escrituras", "Documentação jurídica"],
-      },
+    title: "Três frentes, um objetivo: a sua empresa a funcionar melhor",
+    description: "Começamos por perceber o seu negócio, automatizamos o que faz sentido e damos-lhe uma presença digital à altura.",
+    focus: "O nosso foco",
+    consulting: {
+      tag: "01 · Consultoria",
+      title: "Consultoria e melhoria de processos",
+      text: "Antes de mexer em tecnologia, olhamos para a forma como a sua equipa trabalha. Mapeamos, medimos e propomos melhorias concretas.",
+      items: [
+        "Mapeamento de processos",
+        "Identificação de desperdícios",
+        "Plano de melhoria priorizado",
+        "Indicadores de desempenho",
+      ],
+    },
+    automation: {
+      tag: "02 · Automação & IA",
+      ai: "IA",
+      title: "Automação de processos com Inteligência Artificial",
+      text: "Ligamos sistemas, lemos documentos e disparamos fluxos de trabalho automáticos, para a sua equipa se dedicar ao que realmente gera valor.",
+      capabilities: [
+        {
+          title: "Workflows automáticos",
+          text: "Emails, alertas, aprovações e relatórios sem intervenção manual.",
+        },
+        {
+          title: "IA aplicada ao negócio",
+          text: "Classificação, assistentes internos e análise preditiva.",
+        },
+        {
+          title: "Leitura inteligente de documentos",
+          text: "Faturas, contratos e PDFs transformados em dados.",
+        },
+        {
+          title: "Integração de sistemas",
+          text: "ERP, CRM, Excel, Outlook e APIs a falar entre si.",
+        },
+      ],
+    },
+    web: {
+      tag: "03 · Websites & Software",
+      title: "Websites de excelência e software à medida",
+      text: "Sites rápidos, bonitos e pensados para converter, ligados às suas automações para que cada contacto entre direto no seu processo.",
+      items: [
+        "Design à medida",
+        "Otimizados para Google e telemóvel",
+        "Multilíngue",
+        "Portais e aplicações web",
+      ],
+      browser: "o-seu-negocio.pt",
+    },
+  },
+  beforeAfter: {
+    eyebrow: "Antes e depois",
+    title: "O mesmo processo. Uma fração do tempo.",
+    description: "Veja o que acontece a uma fatura de fornecedor quando chega por email, hoje e com uma automação Nexia.",
+    manualLabel: "Hoje (manual)",
+    autoLabel: "Com a Nexia",
+    manualSteps: [
+      "Abrir o email e descarregar o PDF",
+      "Ler a fatura linha a linha",
+      "Copiar os dados para o Excel",
+      "Introduzir tudo no ERP",
+      "Arquivar o ficheiro na pasta certa",
+      "Avisar a contabilidade por email",
     ],
+    autoSteps: [
+      "A fatura chega ao email",
+      "A IA lê, valida e lança no ERP",
+      "Arquivo e aviso feitos automaticamente",
+      "A equipa só revê as exceções",
+    ],
+    metricLabels: ["Tempo por fatura", "Erros", "Volume"],
+    manualMetrics: ["~15 minutos", "Erros de digitação", "Mais faturas, mais pessoas"],
+    autoMetrics: ["Segundos", "Validação automática", "Escala sem contratar"],
+    note: "Exemplo ilustrativo baseado num processo típico. Os valores reais dependem de cada empresa.",
+  },
+  calculator: {
+    eyebrow: "Calculadora de poupança",
+    title: "Quanto lhe custa o trabalho repetitivo?",
+    description: "Ajuste os valores e veja uma estimativa rápida do que a automação pode devolver à sua empresa.",
+    people: "Pessoas envolvidas",
+    hours: "Horas por semana em tarefas repetitivas (por pessoa)",
+    cost: "Custo por hora de cada pessoa",
+    hoursUnit: "h",
+    perYear: "por ano",
+    savedMoney: "Poupança estimada",
+    savedHours: "Horas recuperadas",
+    savedDays: "Dias de trabalho libertados",
+    assumption: "Estimativa assumindo que 60% do trabalho repetitivo é automatizável, ao longo de 46 semanas de trabalho por ano.",
+    cta: "Quero esta poupança: pedir diagnóstico",
+    prefillProblem: "Automatizar tarefas repetitivas",
+    prefill: "Estimativa da calculadora: {people} pessoa(s) × {hours} h/semana em tarefas repetitivas, a {cost} €/hora. Poupança estimada: {money} por ano ({savedHours} horas).",
   },
   process: {
     eyebrow: "Como Trabalhamos",
@@ -217,11 +294,11 @@ export const pt = {
       "Transformamos empresas através da tecnologia: automação, Inteligência Artificial e software feito à medida.",
     servicesTitle: "Serviços",
     services: [
+      "Consultoria de Processos",
       "Automação Empresarial",
       "Inteligência Artificial",
-      "Software à Medida",
       "Integração de Sistemas",
-      "Processamento de Documentos",
+      "Websites e Software",
     ],
     companyTitle: "Empresa",
     company: ["Como Trabalhamos", "Setores", "Casos de Utilização", "FAQ"],

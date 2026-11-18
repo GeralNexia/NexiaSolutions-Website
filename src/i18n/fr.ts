@@ -2,15 +2,16 @@ import type { Dictionary } from "./pt";
 
 export const fr: Dictionary = {
   meta: {
-    title: "Nexia Solutions | Automatisation des processus et IA pour les entreprises",
+    title: "Nexia Solutions | Conseil, automatisation des processus et sites web",
     description:
-      "Automatisation des processus, Intelligence Artificielle, logiciels sur mesure et intégration de systèmes pour réduire les coûts et éliminer les tâches répétitives.",
+      "Conseil et amélioration des processus, automatisation avec l'Intelligence Artificielle et sites web d'excellence pour les entreprises qui veulent mieux travailler et grandir.",
   },
   nav: {
     links: {
       servicos: "Services",
       processo: "Notre méthode",
       setores: "Secteurs",
+      calculadora: "Calculateur",
       faq: "FAQ",
       contacto: "Contact",
     },
@@ -24,9 +25,23 @@ export const fr: Dictionary = {
     title1: "Nous automatisons les processus.",
     title2: "Nous propulsons les entreprises.",
     subtitle:
-      "Nous développons des solutions intelligentes basées sur l'Intelligence Artificielle, l'automatisation et des logiciels sur mesure pour réduire les coûts, éliminer les tâches répétitives et augmenter la productivité.",
+      "Nous analysons le fonctionnement de votre entreprise, automatisons ce qui est répétitif et créons des sites web à la hauteur de votre activité. Moins de temps perdu, plus de résultats.",
     cta: "Demander un diagnostic gratuit",
-    checks: ["Fini les tâches répétitives", "S'intègre à votre ERP", "Des données sécurisées partout"],
+    ctaSecondary: "Calculer mes économies",
+    pillars: [
+      {
+        label: "Conseil",
+        detail: "Nous analysons et améliorons vos processus",
+      },
+      {
+        label: "Automatisation & IA",
+        detail: "Nous éliminons les tâches répétitives",
+      },
+      {
+        label: "Sites web",
+        detail: "Des sites qui convertissent",
+      },
+    ],
     areasLabel: "Experts en",
     areas: ["Automatisation des processus", "Processus financiers", "Logistique intelligente", "Intelligence Artificielle", "Sites web de référence"],
     pipelineTitle: "Nexia Solutions · Pipeline d'automatisation",
@@ -56,36 +71,98 @@ export const fr: Dictionary = {
   },
   services: {
     eyebrow: "Services",
-    title: "Une technologie qui travaille pour vous",
-    description:
-      "Du diagnostic à la mise en œuvre, nous livrons des solutions complètes et prêtes à l'emploi.",
-    items: [
-      {
-        title: "Automatisation d'entreprise",
-        text: "Nous automatisons les tâches répétitives et libérons vos équipes pour l'essentiel.",
-        items: ["Workflows automatiques", "Emails et alertes", "Rapports récurrents"],
-      },
-      {
-        title: "Intelligence Artificielle",
-        text: "Nous créons des solutions d'IA adaptées à votre activité et à vos données.",
-        items: ["Classification automatique", "Assistants internes", "Analyse prédictive"],
-      },
-      {
-        title: "Développement logiciel",
-        text: "Des logiciels sur mesure, conçus pour évoluer avec votre entreprise.",
-        items: ["Applications web", "ERP et CRM", "Portails et outils internes"],
-      },
-      {
-        title: "Intégration de systèmes",
-        text: "Nous connectons tout ce que vous utilisez déjà, sans remplacer ce qui fonctionne.",
-        items: ["ERP · CRM", "Excel · Outlook", "Google Workspace · API"],
-      },
-      {
-        title: "Traitement intelligent de documents",
-        text: "Lecture automatique de documents par IA, avec validation humaine optionnelle.",
-        items: ["PDF, contrats et factures", "Rapports et actes", "Documentation juridique"],
-      },
+    title: "Trois axes, un objectif : une entreprise qui fonctionne mieux",
+    description: "Nous commençons par comprendre votre activité, automatisons ce qui a du sens et vous offrons une présence digitale à la hauteur.",
+    focus: "Notre priorité",
+    consulting: {
+      tag: "01 · Conseil",
+      title: "Conseil et amélioration des processus",
+      text: "Avant de toucher à la technologie, nous observons la façon dont votre équipe travaille. Nous cartographions, mesurons et proposons des améliorations concrètes.",
+      items: [
+        "Cartographie des processus",
+        "Identification des gaspillages",
+        "Plan d'amélioration priorisé",
+        "Indicateurs de performance",
+      ],
+    },
+    automation: {
+      tag: "02 · Automatisation & IA",
+      ai: "IA",
+      title: "Automatisation des processus avec l'Intelligence Artificielle",
+      text: "Nous connectons vos systèmes, lisons vos documents et déclenchons des flux automatiques, pour que votre équipe se concentre sur ce qui crée vraiment de la valeur.",
+      capabilities: [
+        {
+          title: "Workflows automatiques",
+          text: "E-mails, alertes, validations et rapports sans intervention manuelle.",
+        },
+        {
+          title: "IA appliquée à votre activité",
+          text: "Classification, assistants internes et analyse prédictive.",
+        },
+        {
+          title: "Lecture intelligente de documents",
+          text: "Factures, contrats et PDF transformés en données.",
+        },
+        {
+          title: "Intégration de systèmes",
+          text: "ERP, CRM, Excel, Outlook et API qui communiquent entre eux.",
+        },
+      ],
+    },
+    web: {
+      tag: "03 · Sites web & Logiciels",
+      title: "Sites web d'excellence et logiciels sur mesure",
+      text: "Des sites rapides, élégants et conçus pour convertir, reliés à vos automatisations pour que chaque contact entre directement dans votre processus.",
+      items: [
+        "Design sur mesure",
+        "Optimisés pour Google et le mobile",
+        "Multilingues",
+        "Portails et applications web",
+      ],
+      browser: "votre-entreprise.fr",
+    },
+  },
+  beforeAfter: {
+    eyebrow: "Avant et après",
+    title: "Le même processus. Une fraction du temps.",
+    description: "Voyez ce qui arrive à une facture fournisseur reçue par e-mail, aujourd'hui et avec une automatisation Nexia.",
+    manualLabel: "Aujourd'hui (manuel)",
+    autoLabel: "Avec Nexia",
+    manualSteps: [
+      "Ouvrir l'e-mail et télécharger le PDF",
+      "Lire la facture ligne par ligne",
+      "Copier les données dans Excel",
+      "Tout saisir dans l'ERP",
+      "Classer le fichier dans le bon dossier",
+      "Prévenir la comptabilité par e-mail",
     ],
+    autoSteps: [
+      "La facture arrive par e-mail",
+      "L'IA la lit, la valide et l'enregistre dans l'ERP",
+      "Classement et notification automatiques",
+      "L'équipe ne vérifie que les exceptions",
+    ],
+    metricLabels: ["Temps par facture", "Erreurs", "Volume"],
+    manualMetrics: ["~15 minutes", "Erreurs de saisie", "Plus de factures, plus de personnes"],
+    autoMetrics: ["Quelques secondes", "Validation automatique", "Croissance sans recruter"],
+    note: "Exemple illustratif basé sur un processus type. Les valeurs réelles dépendent de chaque entreprise.",
+  },
+  calculator: {
+    eyebrow: "Calculateur d'économies",
+    title: "Combien vous coûte le travail répétitif ?",
+    description: "Ajustez les valeurs et obtenez une estimation rapide de ce que l'automatisation peut rendre à votre entreprise.",
+    people: "Personnes concernées",
+    hours: "Heures par semaine de tâches répétitives (par personne)",
+    cost: "Coût horaire par personne",
+    hoursUnit: "h",
+    perYear: "par an",
+    savedMoney: "Économies estimées",
+    savedHours: "Heures récupérées",
+    savedDays: "Jours de travail libérés",
+    assumption: "Estimation en supposant que 60 % du travail répétitif est automatisable, sur 46 semaines de travail par an.",
+    cta: "Je veux ces économies : demander un diagnostic",
+    prefillProblem: "Automatiser les tâches répétitives",
+    prefill: "Estimation du calculateur : {people} personne(s) × {hours} h/semaine de tâches répétitives, à {cost} €/heure. Économies estimées : {money} par an ({savedHours} heures).",
   },
   process: {
     eyebrow: "Notre méthode",
@@ -220,11 +297,11 @@ export const fr: Dictionary = {
       "Nous transformons les entreprises grâce à la technologie : automatisation, Intelligence Artificielle et logiciels sur mesure.",
     servicesTitle: "Services",
     services: [
+      "Conseil en processus",
       "Automatisation d'entreprise",
       "Intelligence Artificielle",
-      "Logiciels sur mesure",
       "Intégration de systèmes",
-      "Traitement de documents",
+      "Sites web et logiciels",
     ],
     companyTitle: "Entreprise",
     company: ["Notre méthode", "Secteurs", "Cas d'usage", "FAQ"],
