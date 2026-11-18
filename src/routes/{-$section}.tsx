@@ -5,6 +5,7 @@ import { Problems } from "@/components/site/Problems";
 import { Services } from "@/components/site/Services";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { SavingsCalculator } from "@/components/site/SavingsCalculator";
+import { Websites } from "@/components/site/Websites";
 import { Process } from "@/components/site/Process";
 import { WhyUs } from "@/components/site/WhyUs";
 import { Stats } from "@/components/site/Stats";
@@ -30,6 +31,8 @@ export const Route = createFileRoute("/{-$section}")({
   beforeLoad: ({ params }) => {
     if (params.section && !SECTION_SLUGS.includes(params.section)) throw notFound();
   },
+  // Nota: os dados estruturados (JSON-LD) para o Google são escritos no index.html
+  // durante a build — ver src/lib/structured-data.ts e vite.config.ts.
   head: () => ({
     meta: [
       { title: "Nexia Solutions | Consultoria, Automação de Processos e Websites" },
@@ -41,32 +44,6 @@ export const Route = createFileRoute("/{-$section}")({
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-    ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: "Nexia Solutions",
-          description,
-          email: "geralnexia@gmail.com",
-          telephone: "+351924890248",
-          areaServed: "PT",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Rua de Angola, n.º 87",
-            postalCode: "4990-344",
-            addressLocality: "Ponte de Lima",
-            addressRegion: "Viana do Castelo",
-            addressCountry: "PT",
-          },
-          sameAs: [
-            "https://www.facebook.com/profile.php?id=61593294254599",
-            "https://www.instagram.com/nexia__solutions",
-          ],
-        }),
-      },
     ],
   }),
   component: Index,
@@ -96,6 +73,7 @@ function Index() {
         <Services />
         <BeforeAfter />
         <SavingsCalculator />
+        <Websites />
         <Process />
 
         <WhyUs />

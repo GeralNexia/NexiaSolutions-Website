@@ -5,7 +5,7 @@ import { company, legalPages, LIVRO_RECLAMACOES_URL } from "@/lib/company";
 import { handleSectionClick, sectionHref } from "@/lib/navigation";
 
 const groupIds = [
-  ["servicos", "servicos", "servicos", "servicos", "servicos"],
+  ["servicos", "servicos", "servicos", "servicos", "websites"],
   ["processo", "setores", "casos", "faq"],
 ];
 

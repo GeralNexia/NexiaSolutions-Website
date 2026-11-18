@@ -13,6 +13,7 @@ export const SECTIONS = [
   { id: "servicos", slug: "servicos" },
   { id: "antes-depois", slug: "antes-e-depois" },
   { id: "calculadora", slug: "calculadora" },
+  { id: "websites", slug: "websites" },
   { id: "processo", slug: "como-trabalhamos" },
   { id: "porque-nexia", slug: "porque-nexia" },
   { id: "resultados", slug: "resultados" },

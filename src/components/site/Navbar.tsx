@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const linkIds = ["servicos", "calculadora", "processo", "faq", "contacto"] as const;
+const linkIds = ["servicos", "websites", "calculadora", "processo", "contacto"] as const;
 
 export function Navbar() {
   const { t, lang, setLang } = useI18n();
