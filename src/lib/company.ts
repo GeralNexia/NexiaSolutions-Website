@@ -19,7 +19,7 @@ export const company = {
   website: "https://www.nexiasolutions.pt",
   country: "Portugal",
   /** Data da última atualização dos documentos legais (AAAA-MM-DD). */
-  legalLastUpdated: "2026-11-13",
+  legalLastUpdated: "2026-11-18",
 } as const;
 
 export const legalPages = [

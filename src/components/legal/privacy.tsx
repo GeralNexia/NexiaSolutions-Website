@@ -56,6 +56,9 @@ export const privacyDocs: LegalDocs = {
           estatística, publicidade ou perfis de utilizador. Para mais detalhes, consulte a nossa{" "}
           <Link to="/politica-de-cookies">Política de Cookies</Link>.
         </p>
+        <p>
+          A calculadora de poupança do site funciona apenas no seu navegador: os valores que introduz não são enviados nem guardados. Só chegam até nós se decidir enviar o formulário de contacto com a estimativa incluída.
+        </p>
 
         <h2>3. Finalidades e fundamentos de licitude</h2>
         <div className="table-wrap">
@@ -258,6 +261,9 @@ export const privacyDocs: LegalDocs = {
           tools. For more details, please see our{" "}
           <Link to="/politica-de-cookies">Cookie Policy</Link>.
         </p>
+        <p>
+          The website's savings calculator runs only in your browser: the values you enter are neither sent nor stored. They only reach us if you choose to submit the contact form with the estimate included.
+        </p>
 
         <h2>3. Purposes and legal bases</h2>
         <div className="table-wrap">
@@ -456,6 +462,9 @@ export const privacyDocs: LegalDocs = {
           personnelles. Nous n'utilisons actuellement aucun outil de mesure d'audience, de publicité
           ou de profilage. Pour plus de détails, consultez notre{" "}
           <Link to="/politica-de-cookies">Politique de cookies</Link>.
+        </p>
+        <p>
+          Le calculateur d'économies du site fonctionne uniquement dans votre navigateur : les valeurs saisies ne sont ni envoyées ni conservées. Elles ne nous parviennent que si vous choisissez d'envoyer le formulaire de contact avec l'estimation incluse.
         </p>
 
         <h2>3. Finalités et bases juridiques</h2>
@@ -659,6 +668,9 @@ export const privacyDocs: LegalDocs = {
           preferencias que elija (tema e idioma), sin datos personales. Actualmente no utilizamos
           herramientas de analítica, publicidad ni elaboración de perfiles. Para más detalles,
           consulte nuestra <Link to="/politica-de-cookies">Política de Cookies</Link>.
+        </p>
+        <p>
+          La calculadora de ahorro del sitio funciona solo en su navegador: los valores que introduce no se envían ni se guardan. Solo nos llegan si decide enviar el formulario de contacto con la estimación incluida.
         </p>
 
         <h2>3. Finalidades y bases jurídicas</h2>

@@ -377,8 +377,8 @@ export const pt = {
   },
   cookieBanner: {
     label: "Aviso de cookies",
-    text: "O nosso website utiliza cookies para garantir que lhe proporcionamos a melhor experiência de navegação. Se quiser continuar, partimos do princípio em que está de acordo com a nossa política de cookies.",
-    accept: "Aceitar",
+    text: "Este site não usa cookies de seguimento nem publicidade. Guardamos apenas, no seu navegador, o tema e o idioma que escolher.",
+    accept: "Entendi",
     more: "Saber mais",
     close: "Fechar aviso de cookies",
   },

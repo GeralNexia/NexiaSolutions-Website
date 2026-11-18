@@ -380,8 +380,8 @@ export const fr: Dictionary = {
   },
   cookieBanner: {
     label: "Avis sur les cookies",
-    text: "Notre site web utilise des cookies pour vous garantir la meilleure expérience de navigation. Si vous continuez, nous considérons que vous acceptez notre politique de cookies.",
-    accept: "Accepter",
+    text: "Ce site n'utilise pas de cookies de suivi ni de publicité. Nous enregistrons uniquement, dans votre navigateur, le thème et la langue que vous choisissez.",
+    accept: "Compris",
     more: "En savoir plus",
     close: "Fermer l'avis sur les cookies",
   },

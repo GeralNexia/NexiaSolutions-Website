@@ -379,8 +379,8 @@ export const es: Dictionary = {
   },
   cookieBanner: {
     label: "Aviso de cookies",
-    text: "Nuestro sitio web utiliza cookies para garantizarle la mejor experiencia de navegación. Si continúa, entendemos que está de acuerdo con nuestra política de cookies.",
-    accept: "Aceptar",
+    text: "Este sitio no utiliza cookies de seguimiento ni de publicidad. Solo guardamos, en su navegador, el tema y el idioma que elija.",
+    accept: "Entendido",
     more: "Saber más",
     close: "Cerrar aviso de cookies",
   },
