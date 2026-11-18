@@ -14,6 +14,7 @@ import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { SiteIntro } from "@/components/site/SiteIntro";
+import { FloatingContact } from "@/components/site/FloatingContact";
 import { useEffect } from "react";
 import { SECTION_SLUGS, scrollToSectionOnLoad } from "@/lib/navigation";
 import { useI18n } from "@/i18n";
@@ -105,6 +106,7 @@ function Index() {
         <Contact />
       </main>
       <Footer />
+      <FloatingContact />
     </div>
   );
 }

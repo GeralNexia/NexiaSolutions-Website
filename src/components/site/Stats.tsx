@@ -3,11 +3,12 @@ import { useInView } from "motion/react";
 import { Reveal, SectionHeading } from "./Reveal";
 import { useI18n } from "@/i18n";
 
+// Médias de referência do que é possível (não resultados medidos de um cliente).
 const values = [
-  { value: 95, suffix: "%" },
-  { value: 70, suffix: "%" },
-  { value: 40, suffix: "%" },
-  { value: 24, suffix: "/7" },
+  { value: 95, suffix: "%", upTo: true },
+  { value: 70, suffix: "%", upTo: true },
+  { value: 40, suffix: "%", upTo: true },
+  { value: 24, suffix: "/7", upTo: false },
 ];
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
@@ -48,12 +49,18 @@ export function Stats() {
           {stats.map((s, i) => (
             <Reveal key={i} delay={i * 0.08}>
               <div className="card-hover h-full rounded-2xl border border-border bg-card p-8 text-center shadow-soft">
+                <p className="h-4 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+                  {s.upTo ? t.stats.upTo : ""}
+                </p>
                 <Counter value={s.value} suffix={s.suffix} />
                 <p className="mt-3 text-sm text-muted-foreground">{s.label}</p>
               </div>
             </Reveal>
           ))}
         </div>
+        <p className="mx-auto mt-8 max-w-2xl text-center text-xs leading-relaxed text-muted-foreground">
+          {t.stats.note}
+        </p>
       </div>
     </section>
   );

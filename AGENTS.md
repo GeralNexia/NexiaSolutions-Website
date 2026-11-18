@@ -1,10 +1,12 @@
-<!-- LOVABLE:BEGIN -->
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
-<!-- LOVABLE:END -->
+# Nexia Solutions Website
+
+Projeto independente (Vite + React + TanStack Router + Tailwind), publicado no
+GitHub Pages em www.nexiasolutions.pt através de `.github/workflows/deploy.yml`
+sempre que há push para `main`.
+
+- Instalar: `npm install`
+- Desenvolvimento: `npm run dev`
+- Build: `npm run build`
+
+Os textos do site estão em `src/i18n/` (pt, en, fr, es); qualquer texto novo tem
+de ser adicionado nos 4 idiomas.

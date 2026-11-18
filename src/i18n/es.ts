@@ -168,12 +168,13 @@ export const es: Dictionary = {
     eyebrow: "Cómo Trabajamos",
     title: "Un recorrido claro, del primer contacto al soporte",
     step: "Etapa",
+    youGet: "Recibe",
     items: [
-      { title: "Diagnóstico", text: "Analizamos sus procesos e identificamos oportunidades de automatización." },
-      { title: "Análisis de requisitos", text: "Definimos alcance, integraciones, datos y objetivos medibles." },
-      { title: "Desarrollo", text: "Construimos la solución a medida, con entregas iterativas y visibles." },
-      { title: "Implementación", text: "Ponemos en producción, formamos al equipo y migramos los datos." },
-      { title: "Soporte", text: "Seguimiento continuo, mejoras y monitorización de los flujos." },
+      { title: "Diagnóstico", text: "Analizamos sus procesos e identificamos oportunidades de automatización.", duration: "Gratis · 1 reunión", deliverable: "Informe con las oportunidades priorizadas" },
+      { title: "Análisis de requisitos", text: "Definimos alcance, integraciones, datos y objetivos medibles.", duration: "1 a 2 semanas", deliverable: "Propuesta con alcance, plazos y precio cerrados" },
+      { title: "Desarrollo", text: "Construimos la solución a medida, con entregas iterativas y visibles.", duration: "1 semana a 3 meses", deliverable: "Demostraciones periódicas de lo que se construye" },
+      { title: "Implementación", text: "Ponemos en producción, formamos al equipo y migramos los datos.", duration: "1 a 2 semanas", deliverable: "Solución en producción y equipo formado" },
+      { title: "Soporte", text: "Seguimiento continuo, mejoras y monitorización de los flujos.", duration: "Continuo", deliverable: "Monitorización, correcciones y mejoras" },
     ],
   },
   whyUs: {
@@ -192,8 +193,10 @@ export const es: Dictionary = {
     ],
   },
   stats: {
-    eyebrow: "Resultados",
-    title: "Impacto medido, no prometido",
+    eyebrow: "Potencial",
+    title: "Lo que la automatización puede cambiar en su empresa",
+    upTo: "hasta",
+    note: "Medias de referencia de lo que es posible en proyectos de automatización. El potencial real de su empresa se evalúa en el diagnóstico gratuito.",
     labels: [
       "Reducción de tareas repetitivas",
       "Más rapidez en los procesos",
@@ -262,6 +265,14 @@ export const es: Dictionary = {
   },
   contact: {
     eyebrow: "Contacto",
+    stepOf: "Paso {n} de 2",
+    step1Title: "Lo esencial",
+    step2Title: "Detalles opcionales",
+    step2Hint: "Estos datos nos ayudan a preparar el diagnóstico, pero puede dejarlos en blanco.",
+    next: "Continuar",
+    back: "Volver",
+    needLabel: "¿Qué necesita?",
+    promises: ["Diagnóstico gratuito y sin compromiso", "Respuesta en menos de 24 horas", "Datos tratados según el RGPD"],
     title: "Solicite su diagnóstico gratuito",
     description:
       "Cuéntenos el problema que quiere resolver. Le responderemos con una propuesta concreta.",
@@ -339,6 +350,10 @@ export const es: Dictionary = {
     lines: ["Automatización de procesos", "Finanzas sin fricción", "Logística inteligente", "Webs de referencia"],
     skip: "Saltar intro",
     ready: "Listo",
+  },
+  floating: {
+    whatsapp: "Hablar por WhatsApp",
+    whatsappMessage: "¡Hola! Me gustaría saber más sobre los servicios de Nexia Solutions.",
   },
   cookieBanner: {
     label: "Aviso de cookies",

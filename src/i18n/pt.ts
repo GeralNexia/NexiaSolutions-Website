@@ -166,12 +166,13 @@ export const pt = {
     eyebrow: "Como Trabalhamos",
     title: "Um percurso claro, do primeiro contacto ao suporte",
     step: "Etapa",
+    youGet: "Recebe",
     items: [
-      { title: "Diagnóstico", text: "Analisamos os seus processos e identificamos oportunidades de automação." },
-      { title: "Levantamento de requisitos", text: "Definimos âmbito, integrações, dados e objetivos mensuráveis." },
-      { title: "Desenvolvimento", text: "Construímos a solução à medida, com entregas iterativas e visíveis." },
-      { title: "Implementação", text: "Colocamos em produção, formamos a equipa e migramos os dados." },
-      { title: "Suporte", text: "Acompanhamento contínuo, melhorias e monitorização dos fluxos." },
+      { title: "Diagnóstico", text: "Analisamos os seus processos e identificamos oportunidades de automação.", duration: "Gratuito · 1 reunião", deliverable: "Relatório com as oportunidades priorizadas" },
+      { title: "Levantamento de requisitos", text: "Definimos âmbito, integrações, dados e objetivos mensuráveis.", duration: "1 a 2 semanas", deliverable: "Proposta com âmbito, prazos e preço fechados" },
+      { title: "Desenvolvimento", text: "Construímos a solução à medida, com entregas iterativas e visíveis.", duration: "1 semana a 3 meses", deliverable: "Demonstrações regulares do que está a ser construído" },
+      { title: "Implementação", text: "Colocamos em produção, formamos a equipa e migramos os dados.", duration: "1 a 2 semanas", deliverable: "Solução em produção e equipa formada" },
+      { title: "Suporte", text: "Acompanhamento contínuo, melhorias e monitorização dos fluxos.", duration: "Contínuo", deliverable: "Monitorização, correções e melhorias" },
     ],
   },
   whyUs: {
@@ -190,8 +191,10 @@ export const pt = {
     ],
   },
   stats: {
-    eyebrow: "Resultados",
-    title: "Impacto medido, não prometido",
+    eyebrow: "Potencial",
+    title: "O que a automação pode mudar na sua empresa",
+    upTo: "até",
+    note: "Médias de referência do que é possível em projetos de automação. O potencial real da sua empresa é avaliado no diagnóstico gratuito.",
     labels: [
       "Redução de tarefas repetitivas",
       "Mais rapidez nos processos",
@@ -260,6 +263,14 @@ export const pt = {
   },
   contact: {
     eyebrow: "Contacto",
+    stepOf: "Passo {n} de 2",
+    step1Title: "O essencial",
+    step2Title: "Detalhes opcionais",
+    step2Hint: "Estes dados ajudam-nos a preparar o diagnóstico, mas pode deixá-los em branco.",
+    next: "Continuar",
+    back: "Voltar",
+    needLabel: "O que precisa?",
+    promises: ["Diagnóstico gratuito e sem compromisso", "Resposta em menos de 24 horas", "Dados tratados segundo o RGPD"],
     title: "Solicite o seu diagnóstico gratuito",
     description:
       "Conte-nos o problema que quer resolver. Respondemos com uma proposta concreta.",
@@ -337,6 +348,10 @@ export const pt = {
     lines: ["Automação de processos", "Finanças sem fricção", "Logística inteligente", "Websites de referência"],
     skip: "Saltar intro",
     ready: "Pronto",
+  },
+  floating: {
+    whatsapp: "Falar no WhatsApp",
+    whatsappMessage: "Olá! Gostaria de saber mais sobre os serviços da Nexia Solutions.",
   },
   cookieBanner: {
     label: "Aviso de cookies",

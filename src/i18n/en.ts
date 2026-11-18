@@ -167,12 +167,13 @@ export const en: Dictionary = {
     eyebrow: "How We Work",
     title: "A clear path, from first contact to ongoing support",
     step: "Step",
+    youGet: "You get",
     items: [
-      { title: "Assessment", text: "We analyse your processes and identify automation opportunities." },
-      { title: "Requirements gathering", text: "We define scope, integrations, data and measurable goals." },
-      { title: "Development", text: "We build a tailored solution, with iterative and visible deliveries." },
-      { title: "Implementation", text: "We go live, train your team and migrate your data." },
-      { title: "Support", text: "Ongoing follow-up, improvements and workflow monitoring." },
+      { title: "Assessment", text: "We analyse your processes and identify automation opportunities.", duration: "Free · 1 meeting", deliverable: "Report with prioritised opportunities" },
+      { title: "Requirements gathering", text: "We define scope, integrations, data and measurable goals.", duration: "1 to 2 weeks", deliverable: "Proposal with fixed scope, timeline and price" },
+      { title: "Development", text: "We build a tailored solution, with iterative and visible deliveries.", duration: "1 week to 3 months", deliverable: "Regular demos of what is being built" },
+      { title: "Implementation", text: "We go live, train your team and migrate your data.", duration: "1 to 2 weeks", deliverable: "Solution live and team trained" },
+      { title: "Support", text: "Ongoing follow-up, improvements and workflow monitoring.", duration: "Ongoing", deliverable: "Monitoring, fixes and improvements" },
     ],
   },
   whyUs: {
@@ -191,8 +192,10 @@ export const en: Dictionary = {
     ],
   },
   stats: {
-    eyebrow: "Results",
-    title: "Measured impact, not empty promises",
+    eyebrow: "Potential",
+    title: "What automation can change in your business",
+    upTo: "up to",
+    note: "Reference averages of what is possible in automation projects. Your business's real potential is assessed in the free assessment.",
     labels: [
       "Fewer repetitive tasks",
       "Faster processes",
@@ -261,6 +264,14 @@ export const en: Dictionary = {
   },
   contact: {
     eyebrow: "Contact",
+    stepOf: "Step {n} of 2",
+    step1Title: "The essentials",
+    step2Title: "Optional details",
+    step2Hint: "These details help us prepare your assessment, but you can leave them blank.",
+    next: "Continue",
+    back: "Back",
+    needLabel: "What do you need?",
+    promises: ["Free, no-obligation assessment", "Reply in less than 24 hours", "Data handled under GDPR"],
     title: "Request your free assessment",
     description: "Tell us the problem you want to solve. We'll reply with a concrete proposal.",
     talkTitle: "Talk to us",
@@ -336,6 +347,10 @@ export const en: Dictionary = {
     lines: ["Process automation", "Frictionless finance", "Smart logistics", "Benchmark websites"],
     skip: "Skip intro",
     ready: "Ready",
+  },
+  floating: {
+    whatsapp: "Chat on WhatsApp",
+    whatsappMessage: "Hi! I'd like to know more about Nexia Solutions' services.",
   },
   cookieBanner: {
     label: "Cookie notice",
